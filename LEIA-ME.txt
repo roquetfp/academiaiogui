@@ -1,0 +1,11 @@
+IOGUI 2.3
+
+NOVIDADES
+- O mascote do app foi redesenhado em uma linguagem mais pixelada.
+- O braço da constância agora usa um Iogui em pixel art com 4 poses.
+- A introdução do app ganhou animação do braço subindo em etapas.
+- A abertura continua limpa: terça abre A, quinta abre B se a fase permitir, sábado abre C.
+- As explicações dos exercícios continuam aparecendo só ao tocar no nome.
+
+PWA
+Hospede a pasta em HTTPS ou localhost para instalação e offline completos.
