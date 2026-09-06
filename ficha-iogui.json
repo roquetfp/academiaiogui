@@ -1,0 +1,291 @@
+{
+  "nome": "Ficha inicial — hérnia L4/L5 e L5/S1",
+  "versao": "2026-09-06",
+  "treinos": {
+    "A": {
+      "day": "Terça",
+      "weekday": 2,
+      "bloqueadoFase0": false,
+      "ex": [
+        {
+          "id": "legpress",
+          "name": "Leg press 45°",
+          "target": "10-12",
+          "rest": 120,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Rampa inclinada, pés na largura dos ombros. <b>Desça só até antes de sentir a bacia começar a girar para trás.</b> Não é preciso trazer os joelhos perto do peito. Sempre bilateral nesta fase."
+        },
+        {
+          "id": "flexora",
+          "name": "Cadeira flexora",
+          "target": "12-15",
+          "rest": 90,
+          "kind": "strength",
+          "range": [
+            12,
+            15
+          ],
+          "tip": "Sentado, rolo atrás das panturrilhas, costas totalmente apoiadas. Sem deslocar o quadril para buscar mais amplitude."
+        },
+        {
+          "id": "chest",
+          "name": "Supino na máquina",
+          "target": "10-12",
+          "rest": 120,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Manoplas na altura do meio do peito. Costas no encosto; <b>não arqueie a lombar para completar a repetição</b>. Volta controlada."
+        },
+        {
+          "id": "remada",
+          "name": "Remada com apoio no peito",
+          "target": "10-12",
+          "rest": 120,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Peito apoiado. Não retire o peito do apoio nem balance o tronco para puxar mais peso."
+        },
+        {
+          "id": "lateral",
+          "name": "Elevação lateral sentado",
+          "target": "12-15",
+          "rest": 60,
+          "kind": "strength",
+          "range": [
+            12,
+            15
+          ],
+          "tip": "Banco com encosto e halteres leves. Suba até a linha dos ombros sem inclinar o tronco."
+        },
+        {
+          "id": "panturrilha",
+          "name": "Panturrilha sentado",
+          "target": "15-20",
+          "rest": 60,
+          "kind": "strength",
+          "range": [
+            15,
+            20
+          ],
+          "tip": "Movimento controlado. Nesta fase, prefira a versão sentada; a versão em pé não é proibida para sempre."
+        },
+        {
+          "id": "birddog",
+          "name": "Bird dog",
+          "target": "6-8/lado · 6-8s",
+          "rest": 45,
+          "kind": "bird",
+          "range": [
+            6,
+            8
+          ],
+          "tip": "Quatro apoios, coluna neutra. Braço e perna opostos <b>até a linha do corpo, não acima</b>. Mantenha a pelve estável."
+        }
+      ]
+    },
+    "B": {
+      "day": "Quinta",
+      "weekday": 4,
+      "bloqueadoFase0": true,
+      "ex": [
+        {
+          "id": "flexora",
+          "name": "Cadeira flexora",
+          "target": "12-15",
+          "rest": 90,
+          "kind": "strength",
+          "range": [
+            12,
+            15
+          ],
+          "tip": "Costas apoiadas. Não use o tronco para ajudar."
+        },
+        {
+          "id": "extensora",
+          "name": "Cadeira extensora",
+          "target": "12-15",
+          "rest": 90,
+          "kind": "strength",
+          "range": [
+            12,
+            15
+          ],
+          "tip": "Costas no encosto e quadril estável durante toda a série."
+        },
+        {
+          "id": "pulldown",
+          "name": "Puxada frontal",
+          "target": "10-12",
+          "rest": 120,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Puxe até a clavícula <b>sem inclinar nem balançar o tronco</b>. Nunca atrás da nuca."
+        },
+        {
+          "id": "desenv",
+          "name": "Desenvolvimento na máquina",
+          "target": "10-12",
+          "rest": 90,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Encosto alto e carga leve. Se precisar arquear a lombar para empurrar, reduza a carga."
+        },
+        {
+          "id": "rosca",
+          "name": "Rosca direta sentado",
+          "target": "10-12",
+          "rest": 60,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Banco com encosto, cotovelos junto ao tronco e sem impulso das costas."
+        },
+        {
+          "id": "abdutora",
+          "name": "Cadeira abdutora",
+          "target": "12-15",
+          "rest": 60,
+          "kind": "strength",
+          "range": [
+            12,
+            15
+          ],
+          "tip": "Empurre os apoios para fora. Não force amplitude final se a pelve começar a se mover."
+        },
+        {
+          "id": "prancha",
+          "name": "Prancha lateral",
+          "target": "20-30s/lado",
+          "rest": 45,
+          "kind": "plank",
+          "range": [
+            20,
+            30
+          ],
+          "tip": "Comece com joelhos flexionados a 90° se necessário. Progrida quando mantiver alinhamento limpo."
+        }
+      ]
+    },
+    "C": {
+      "day": "Sábado",
+      "weekday": 6,
+      "bloqueadoFase0": false,
+      "ex": [
+        {
+          "id": "hipthrust",
+          "name": "Elevação pélvica (hip thrust)",
+          "target": "10-12",
+          "rest": 120,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "<b>Subiu → alinhou → contraiu os glúteos → parou.</b> Não ganhe altura arqueando a lombar."
+        },
+        {
+          "id": "legpress",
+          "name": "Leg press 45°",
+          "target": "10-12",
+          "rest": 120,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Mesma técnica da terça. Pare antes de a pelve começar a girar para trás."
+        },
+        {
+          "id": "peck",
+          "name": "Peck deck",
+          "target": "10-12",
+          "rest": 90,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Costas apoiadas, cotovelos levemente flexionados e sem impulso do tronco."
+        },
+        {
+          "id": "pulldownN",
+          "name": "Puxada pegada neutra",
+          "target": "10-12",
+          "rest": 120,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Tronco quase vertical e estável. Não transforme a puxada em extensão do tronco."
+        },
+        {
+          "id": "triceps",
+          "name": "Tríceps na polia com corda",
+          "target": "10-12",
+          "rest": 60,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Fique ereto. Se precisar inclinar o tronco para terminar, a série acabou."
+        },
+        {
+          "id": "martelo",
+          "name": "Rosca martelo",
+          "target": "10-12",
+          "rest": 60,
+          "kind": "strength",
+          "range": [
+            10,
+            12
+          ],
+          "tip": "Banco com encosto, palmas uma para a outra e cotovelos próximos ao corpo."
+        },
+        {
+          "id": "pallof",
+          "name": "Pallof hold",
+          "target": "15-20s/lado",
+          "rest": 45,
+          "kind": "pallof",
+          "range": [
+            15,
+            20
+          ],
+          "tip": "Carga muito leve. <b>Apenas impeça o corpo de girar.</b> Quando 20s estiverem confortáveis, o próximo passo é Pallof press."
+        },
+        {
+          "id": "curlup",
+          "name": "McGill curl-up",
+          "target": "6-8 · 8s",
+          "rest": 45,
+          "kind": "curl",
+          "range": [
+            6,
+            8
+          ],
+          "tip": "Preserve a curvatura da lombar. Suba apenas cabeça e ombros como um bloco; a lombar não deve achatar no chão."
+        }
+      ]
+    }
+  }
+}
