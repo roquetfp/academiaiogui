@@ -30,7 +30,7 @@ button{border-radius:0}.pixel{image-rendering:pixelated}.hidden{display:none!imp
 .muted{color:var(--muted)}.tiny{font-size:11px}.caps{text-transform:uppercase;letter-spacing:.11em}.good{color:var(--verde)}.warn{color:#9a6500}.bad{color:var(--vermelho)}
 
 /* splash */
-#splash{position:fixed;inset:0;z-index:100;background:
+#splash{position:fixed;inset:0;z-index:2147483647;background:
 radial-gradient(circle at 50% 38%,#5f3d2b 0 15%,transparent 15%),
 linear-gradient(180deg,#4a2d1f 0%,#2f1a12 60%,#22120b 100%);
 height:100dvh;display:flex;align-items:center;justify-content:center;padding:0 20px;
@@ -65,6 +65,9 @@ border:3px solid var(--creme);box-shadow:8px 8px 0 #201108;display:grid;place-it
 #splash .s3{right:22px;bottom:30px;animation-delay:.38s}
 @keyframes introFloat{from{transform:translateY(0)}to{transform:translateY(-5px)}}
 @keyframes sparkBlink{0%,100%{transform:scale(1);opacity:.35}50%{transform:scale(1.55);opacity:1}}
+
+
+body:has(#splash:not(.out)) .bottom{visibility:hidden!important;pointer-events:none!important}
 
 /* top */
 .top{padding:13px var(--pad) 8px;max-width:600px;margin:auto}.brand{display:flex;align-items:center;gap:9px}.brand img{width:38px;height:38px;object-fit:cover;border:2px solid var(--escuro);box-shadow:2px 2px 0 var(--escuro)}
@@ -272,7 +275,7 @@ const PHASES=[
 {name:"A partir da semana 3",sets:2,reserve:"3-4 reps em reserva",note:"B entra apenas se não houver piora dos sintomas e a recuperação estiver boa.",weekly:3},
 {name:"Fase seguinte",sets:3,reserve:"2-3 reps em reserva",note:"Progressão de carga pelo critério de execução.",weekly:3}
 ]
-const APP_VERSAO="2.8";
+const APP_VERSAO="2.8.2";
 const STORAGE="iogui-v2";const OLD_STORAGE="treino-dados";
 const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
 const defaultData=()=>({version:2,profile:{name:"Roque",start:new Date().toISOString().slice(0,10)},phase:0,autoAdvance:true,history:[],videos:{},inProgress:null,programa:{url:"",json:null,versao:"",atualizado:"",modo:"padrao"},som:{ativo:true}});
@@ -455,7 +458,7 @@ function armState(){
           faltamSemana: Math.max(0, MANUTENCAO - doneNow),
           faltamSubir: Math.max(0, MANUTENCAO - raise), virgem:false};
 }
-function armLevel(raise){ return raise >= 2 ? 3 : raise === 1 ? 2 : 0; }
+function armLevel(raise){ return raise >= 2 ? 3 : raise === 1 ? 1 : 0; }
 
 function lastHistory(){return data.history[0]||null}
 function worstSignal(session){const sig=(session?.items||[]).map(i=>i.signal);return sig.includes("r")?"r":sig.includes("a")?"a":sig.includes("v")?"v":""}
@@ -531,11 +534,12 @@ function renderHome(){const n=data.profile.name||"Roque",t=todayWorkout(),feito=
  $("#armScore").innerHTML = arm.weeks
    ? `<b class="arm-weeks">${arm.weeks}</b> semana${arm.weeks>1?'s':''} com o braço levantado`
    : (arm.raise>=MANUTENCAO ? 'Braço levantado. A contagem começa no fim desta semana.'
-      : arm.raise>0 ? 'Braço subindo.' : (arm.virgem ? 'Braço abaixado.' : 'O braço abaixou.'));
+      : arm.raise===1 ? '1 de 2 treinos · braço a meia altura.'
+      : (arm.virgem ? 'Braço abaixado.' : 'O braço abaixou.'));
  const bars=$("#armBars");bars.innerHTML='';for(let i=0;i<goal;i++){const x=document.createElement('i');if(i<done)x.className='done';else if(i===done&&done>0)x.className='partial';bars.appendChild(x)}
  let txt;
  if(arm.virgem) txt='Dois treinos nesta semana levantam o braço pela primeira vez.';
- else if(arm.raise<MANUTENCAO) txt=`O braço abaixou. ${arm.faltamSubir===1?'Falta 1 treino':`Faltam ${arm.faltamSubir} treinos`} para levantá-lo de novo.`;
+ else if(arm.raise<MANUTENCAO) txt=arm.raise===1?'Você fez 1 treino: o braço fica a meia altura. Falta 1 para levantá-lo totalmente.':`O braço abaixou. Faltam ${arm.faltamSubir} treinos para levantá-lo de novo.`;
  else if(arm.faltamSemana>0) txt=`${arm.faltamSemana===1?'Falta 1 treino':`Faltam ${arm.faltamSemana} treinos`} esta semana para o braço não abaixar.`;
  else txt=`${done} treino${done>1?'s':''} esta semana. O braço continua firme.`;
  $("#streakTxt").textContent=txt;
