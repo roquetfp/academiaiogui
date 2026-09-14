@@ -33,7 +33,7 @@ const PHASES=[
 {name:"A partir da semana 3",sets:2,reserve:"3-4 reps em reserva",note:"B entra apenas se não houver piora dos sintomas e a recuperação estiver boa.",weekly:3},
 {name:"Fase seguinte",sets:3,reserve:"2-3 reps em reserva",note:"Progressão de carga pelo critério de execução.",weekly:3}
 ]
-const APP_VERSAO="2.9.1";
+const APP_VERSAO="2.9.2";
 const STORAGE="iogui-v2";const OLD_STORAGE="treino-dados";
 const MAX_BACKUP_BYTES=5*1024*1024;
 const MAX_PROGRAM_BYTES=512*1024;
@@ -425,6 +425,35 @@ function renderHome(){const n=data.profile.name||"Roque",t=todayWorkout(),feito=
  const grid=$("#workoutGrid");grid.innerHTML='';chavesTreino().forEach(k=>{const lock=bloqueado(k);const b=document.createElement('button');b.className='workout-pick'+(lock?' lock':'');b.disabled=lock;b.innerHTML=`<b>${k}</b><span>${WORKOUTS[k].day}${lock?' · bloqueado nesta fase':''}</span>`;b.onclick=()=>startWorkout(k);grid.appendChild(b)})}
 
 function openPicker(){const c=$("#pickList");c.innerHTML='';chavesTreino().forEach(k=>{const lock=bloqueado(k);const b=document.createElement('button');b.className='btn sec';b.style.cssText='width:100%;margin:6px 0;text-align:left';b.disabled=lock;b.textContent=`Treino ${k} · ${WORKOUTS[k].day}${lock?' · bloqueado':''}`;b.onclick=()=>{$('#dlgPick').close();startWorkout(k)};c.appendChild(b)});$("#dlgPick").showModal()}
+
+// Pré-preenchimento do próximo treino.
+// Usa o registro mais recente daquele exercício no histórico. A cópia é feita
+// apenas ao CRIAR uma nova sessão; depois disso os campos continuam totalmente
+// editáveis e o usuário pode apagar ou reescrever qualquer valor.
+function setsDoUltimoRegistro(ex, quantidade){
+  const campos=fieldsFor(ex).map(f=>f.k);
+  for(const h of data.history){
+    const it=(h.items||[]).find(x=>x.id===ex.id);
+    if(!it || !Array.isArray(it.sets))continue;
+
+    const temAlgumValor=it.sets.some(set=>
+      campos.some(k=>set && set[k]!=='' && set[k]!==null && set[k]!==undefined)
+    );
+    if(!temAlgumValor)continue;
+
+    return Array.from({length:quantidade},(_,i)=>{
+      const destino=blankSet(ex), origem=it.sets[i];
+      if(!origem || typeof origem!=='object')return destino;
+      campos.forEach(k=>{
+        const v=origem[k];
+        if(v!=='' && v!==null && v!==undefined)destino[k]=String(v);
+      });
+      return destino;
+    });
+  }
+  return Array.from({length:quantidade},()=>blankSet(ex));
+}
+
 function startWorkout(k,opt={}){
   if(!WORKOUTS[k]){toast('Treino não existe nesta ficha.');return false}
   if(bloqueado(k)){toast(`Treino ${k} bloqueado na fase inicial.`);return false}
@@ -436,8 +465,8 @@ function startWorkout(k,opt={}){
   }
   if(treinoConcluidoHoje(k)&&!opt.auto){if(!confirm(`O Treino ${k} já foi concluído hoje. Iniciar novamente?`))return false}
   if(treinoConcluidoHoje(k)&&opt.auto)return false;
-  const w=WORKOUTS[k];
-  data.inProgress={workout:k,index:0,started:new Date().toISOString(),phase:data.phase,items:w.ex.map(ex=>({id:ex.id,kind:ex.kind,sets:Array.from({length:phase().sets},()=>blankSet(ex)),signal:''}))};
+  const w=WORKOUTS[k],nSets=phase().sets;
+  data.inProgress={workout:k,index:0,started:new Date().toISOString(),phase:data.phase,items:w.ex.map(ex=>({id:ex.id,kind:ex.kind,sets:setsDoUltimoRegistro(ex,nSets),signal:''}))};
   save();showView('session');return true;
 }
 function currentSession(){return data.inProgress}
@@ -484,7 +513,8 @@ function renderSession(){const s=currentSession();if(!s){showView('home');return
  let setRows='';it.sets.forEach((set,idx)=>{setRows+=`<div class="set-row"><span class="set-num">${idx+1}</span>`;fieldsFor(ex).forEach(f=>{setRows+=`<label class="field"><input data-set="${idx}" data-key="${f.k}" inputmode="${f.mode}" value="${escHtml(set[f.k]??'')}" placeholder="—"><span class="unit">${f.u}</span></label>`});if(it.sets.length>1)setRows+=`<button class="del-set" data-del="${idx}" aria-label="Apagar série ${idx+1}">&times;</button>`;setRows+='</div>'});
  const canAdd=it.sets.length<4;const video=data.videos[ex.id]?`<button class="btn blue" id="videoBtn">Ver execução</button>`:'';
  const detailHtml=`<div class="exercise-details" id="exerciseDetails" hidden>${miniArt(ex.id)}<div class="tip">${ex.tip}</div>${lastHtml}<div class="suggest-box ${sug.kind}"><b>Sugestão do Iogui:</b> ${sug.text}</div></div>`;
- $("#exerciseCard").innerHTML=`<div class="exercise-head"><div class="kicker">Exercício ${s.index+1} de ${w.ex.length}</div><button class="exercise-name-btn" id="exerciseInfoToggle" aria-expanded="false"><span>${escHtml(ex.name)}</span><span class="info-arrow">▸</span></button><span class="target">ALVO ${escHtml(ex.target)}</span><div class="exercise-tap-hint">Toque no nome para ver execução, última vez e orientação</div></div>${detailHtml}<div class="sets">${setRows}${canAdd?'<button class="add-set" id="addSet">+ adicionar série</button>':''}</div><div class="exercise-tools"><button class="btn sec" id="restBtn">Descanso ${ex.rest}s</button>${video}</div><div class="lumbar-box"><div class="label">Resposta da lombar após o exercício</div><div class="signals"><button class="signal v ${it.signal==='v'?'on':''}" data-s="v">Verde</button><button class="signal a ${it.signal==='a'?'on':''}" data-s="a">Amarelo</button><button class="signal r ${it.signal==='r'?'on':''}" data-s="r">Vermelho</button></div></div>`;
+ const prefillHint=last?'<div class="tiny muted" style="padding:7px 0 2px">Valores do último registro já preenchidos · edite ou apague normalmente.</div>':'';
+ $("#exerciseCard").innerHTML=`<div class="exercise-head"><div class="kicker">Exercício ${s.index+1} de ${w.ex.length}</div><button class="exercise-name-btn" id="exerciseInfoToggle" aria-expanded="false"><span>${escHtml(ex.name)}</span><span class="info-arrow">▸</span></button><span class="target">ALVO ${escHtml(ex.target)}</span><div class="exercise-tap-hint">Toque no nome para ver execução, última vez e orientação</div></div>${detailHtml}${prefillHint}<div class="sets">${setRows}${canAdd?'<button class="add-set" id="addSet">+ adicionar série</button>':''}</div><div class="exercise-tools"><button class="btn sec" id="restBtn">Descanso ${ex.rest}s</button>${video}</div><div class="lumbar-box"><div class="label">Resposta da lombar após o exercício</div><div class="signals"><button class="signal v ${it.signal==='v'?'on':''}" data-s="v">Verde</button><button class="signal a ${it.signal==='a'?'on':''}" data-s="a">Amarelo</button><button class="signal r ${it.signal==='r'?'on':''}" data-s="r">Vermelho</button></div></div>`;
  const infoToggle=$('#exerciseInfoToggle'),details=$('#exerciseDetails');infoToggle.onclick=()=>{const open=details.hasAttribute('hidden');if(open)details.removeAttribute('hidden');else details.setAttribute('hidden','');infoToggle.setAttribute('aria-expanded',open?'true':'false')};
  $$('#exerciseCard input').forEach(inp=>inp.oninput=e=>{const idx=+e.target.dataset.set;it.sets[idx][e.target.dataset.key]=e.target.value;save()});const add=$('#addSet');if(add)add.onclick=()=>{it.sets.push(blankSet(ex));save();renderSession()};$$('#exerciseCard .del-set').forEach(b=>b.onclick=()=>{if(it.sets.length<=1)return;it.sets.splice(+b.dataset.del,1);save();renderSession()});$('#restBtn').onclick=()=>startTimer(ex.rest,ex.name);const vb=$('#videoBtn');if(vb)vb.onclick=()=>openVideo(ex);$$('.signal').forEach(b=>b.onclick=()=>setSignal(b.dataset.s));$('#prevExercise').disabled=s.index===0;$('#prevExercise').onclick=()=>{s.index=Math.max(0,s.index-1);save();renderSession();scrollTo(0,0)};const lastIndex=s.index===w.ex.length-1;$('#nextExercise').textContent=lastIndex?'Revisar e finalizar →':'Próximo →';$('#nextExercise').onclick=()=>lastIndex?reviewWorkout():nextExercise();}
 function setSignal(sig){
