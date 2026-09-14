@@ -33,7 +33,7 @@ const PHASES=[
 {name:"A partir da semana 3",sets:2,reserve:"3-4 reps em reserva",note:"B entra apenas se não houver piora dos sintomas e a recuperação estiver boa.",weekly:3},
 {name:"Fase seguinte",sets:3,reserve:"2-3 reps em reserva",note:"Progressão de carga pelo critério de execução.",weekly:3}
 ]
-const APP_VERSAO="2.9.3";
+const APP_VERSAO="2.9.4";
 const STORAGE="iogui-v2";const OLD_STORAGE="treino-dados";
 const MAX_BACKUP_BYTES=5*1024*1024;
 const MAX_PROGRAM_BYTES=512*1024;

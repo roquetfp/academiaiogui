@@ -171,6 +171,12 @@ dialog{border:3px solid var(--escuro);background:var(--papel);color:var(--escuro
 
 @media(max-width:390px){.hero{grid-template-columns:1.35fr .65fr}.hero .mascot img{width:185%;left:-46%}.home-actions{flex-direction:column}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.signals{gap:4px}.signal{font-size:9px;padding:8px 2px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* iPhone/iPad: elimina o zoom de duplo toque sem bloquear a pinça.
+   `manipulation` equivale a permitir pan + pinch-zoom, retirando o gesto
+   de double-tap-to-zoom que atrapalha toques rápidos nos controles. */
+*,*::before,*::after{touch-action:manipulation}
+
 </style>
 </head>
 <body>
