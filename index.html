@@ -119,6 +119,36 @@ border:2px solid var(--escuro);overflow:hidden}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{padding:11px;text-align:center}.stat b{display:block;font-size:22px}.stat span{font-size:9px;text-transform:uppercase;color:var(--muted);letter-spacing:.09em}
 .hist-card{margin-bottom:11px;overflow:hidden}.hist-card .hd{display:flex;justify-content:space-between;padding:7px 10px;background:var(--escuro);color:var(--creme);font-size:11px;font-weight:900}.hist-line{padding:7px 10px;border-top:1px solid #dfccb0;display:flex;justify-content:space-between;gap:10px;font-size:11px}.hist-line span:last-child{text-align:right}.progress-table{overflow:hidden}.progress-row{display:grid;grid-template-columns:1.3fr .7fr .7fr;gap:8px;padding:8px 10px;border-top:1px solid #dfccb0;font-size:11px;align-items:center}.progress-row.h{background:var(--escuro);color:var(--creme);font-weight:900;text-transform:uppercase}.arrow.up{color:var(--verde)}.arrow.same{color:var(--marrom)}
 
+
+/* evolution chart */
+.evo-card{padding:12px;margin-top:8px;overflow:hidden}
+.evo-controls{display:grid;grid-template-columns:1.4fr .9fr;gap:8px;align-items:end}
+.evo-controls label{display:block;font-size:9px;font-weight:1000;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.evo-controls select{width:100%;background:var(--creme);border:2px solid var(--escuro);padding:9px;color:var(--escuro);border-radius:0;font-weight:900}
+.evo-periods{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.evo-period{border:2px solid var(--escuro);background:var(--papel);color:var(--escuro);padding:9px 4px;font-size:9px;font-weight:1000;text-transform:uppercase;cursor:pointer}
+.evo-period.on{background:var(--escuro);color:var(--creme)}
+.evo-summary{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:10px 0}
+.evo-summary .mini{border:2px solid var(--escuro);background:#efe1c3;padding:8px}
+.evo-summary .mini b{display:block;font-size:15px;line-height:1.15}
+.evo-summary .mini span{display:block;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.evo-current{border:2px dashed var(--marrom);background:var(--creme);padding:8px 9px;margin:8px 0 10px;font-size:11px}
+.evo-current b{color:var(--marrom)}
+.evo-chart-wrap{width:100%;overflow:hidden;border:2px solid var(--escuro);background:#f7edd7}
+.evo-svg{display:block;width:100%;height:auto;min-height:260px;touch-action:manipulation}
+.evo-grid{stroke:#dcc8a7;stroke-width:1}
+.evo-axis{stroke:var(--escuro);stroke-width:1.5}
+.evo-line{fill:none;stroke:var(--verde);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.evo-dot{fill:var(--areia);stroke:var(--escuro);stroke-width:1.7;cursor:pointer}
+.evo-dot.active{fill:var(--verde);stroke-width:2.4}
+.evo-ylabel,.evo-xlabel{fill:var(--muted);font-family:inherit;font-size:8px;font-weight:900}
+.evo-axis-title{fill:var(--escuro);font-family:inherit;font-size:9px;font-weight:1000;text-transform:uppercase;letter-spacing:.05em}
+.evo-detail{min-height:34px;padding:8px 3px 0;font-size:11px;color:var(--escuro);line-height:1.35}
+.evo-detail b{color:var(--verde)}
+.evo-empty{padding:24px 12px;text-align:center;color:var(--muted);font-size:12px}
+.evo-note{font-size:10px;color:var(--muted);line-height:1.4;margin:8px 0 0}
+@media(max-width:390px){.evo-controls{grid-template-columns:1fr}.evo-summary{grid-template-columns:1fr 1fr}.evo-svg{min-height:245px}}
+
 /* settings */
 .settings-card{padding:12px;margin-bottom:12px}.settings-card h3{margin:0 0 9px;font-size:12px;text-transform:uppercase;letter-spacing:.1em}.form-row{margin-bottom:10px}.form-row label{display:block;font-size:10px;color:var(--muted);font-weight:900;text-transform:uppercase;margin-bottom:4px}.form-row input,.form-row select{width:100%;background:var(--creme);border:2px solid var(--escuro);padding:9px;color:var(--escuro);border-radius:0}.toggle{display:flex;align-items:center;gap:8px}.toggle input{width:20px;height:20px;accent-color:var(--verde)}.video-row{display:grid;grid-template-columns:1fr;gap:4px;padding:8px 0;border-top:1px solid #dfccb0}.video-row label{font-size:11px;font-weight:900}.video-row input{background:var(--creme);border:2px solid var(--escuro);padding:8px;width:100%}.settings-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 
@@ -173,6 +203,20 @@ dialog{border:3px solid var(--escuro);background:var(--papel);color:var(--escuro
 
 <section id="view-progress" class="view">
   <div class="section-title">Seu progresso</div><div class="stats" id="stats"></div>
+
+  <div class="section-title">Evolução por exercício</div>
+  <div class="evo-card card">
+    <div class="evo-controls">
+      <div><label for="evoExercise">Exercício</label><select id="evoExercise"></select></div>
+      <div><label>Período</label><div class="evo-periods"><button class="evo-period" data-evo-period="8">8 semanas</button><button class="evo-period on" data-evo-period="12">12 semanas</button><button class="evo-period" data-evo-period="all">Tudo</button></div></div>
+    </div>
+    <div class="evo-summary" id="evoSummary"></div>
+    <div class="evo-current" id="evoCurrent"></div>
+    <div class="evo-chart-wrap" id="evoChart"></div>
+    <div class="evo-detail" id="evoDetail"></div>
+    <p class="evo-note">A curva usa apenas semanas encerradas (segunda a domingo). Se o exercício for feito mais de uma vez na semana, o Iogui calcula primeiro a média de cada treino e depois a média da semana. Em períodos longos, todos os pontos continuam no gráfico, mas o eixo X mostra menos rótulos para não ficar poluído.</p>
+  </div>
+
   <div class="section-title">Cargas recentes</div><div class="progress-table card" id="loadProgress"></div>
   <div class="section-title">Histórico</div><div id="history"></div>
 </section>

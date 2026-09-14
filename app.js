@@ -33,7 +33,7 @@ const PHASES=[
 {name:"A partir da semana 3",sets:2,reserve:"3-4 reps em reserva",note:"B entra apenas se não houver piora dos sintomas e a recuperação estiver boa.",weekly:3},
 {name:"Fase seguinte",sets:3,reserve:"2-3 reps em reserva",note:"Progressão de carga pelo critério de execução.",weekly:3}
 ]
-const APP_VERSAO="2.9.2";
+const APP_VERSAO="2.9.3";
 const STORAGE="iogui-v2";const OLD_STORAGE="treino-dados";
 const MAX_BACKUP_BYTES=5*1024*1024;
 const MAX_PROGRAM_BYTES=512*1024;
@@ -44,6 +44,7 @@ const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
 const defaultData=()=>({version:2,profile:{name:"Roque",start:new Date().toISOString().slice(0,10)},phase:0,autoAdvance:true,history:[],videos:{},inProgress:null,programa:{url:"",json:null,versao:"",atualizado:"",modo:"padrao"},som:{ativo:true}});
 let data=defaultData(), installPrompt=null, timerId=null, autoAdvanceTimer=null;
 let editorProgram=null, editorCtx=null, pendingDelete=null;
+let evoExerciseId=null, evoPeriod='12', evoSelectedWeek=null;
 function novoId(prefix='h'){try{return prefix+'-'+crypto.randomUUID()}catch(e){return prefix+'-'+Date.now()+'-'+Math.random().toString(36).slice(2,9)}}
 function garantirIdsHistorico(){let mudou=false;(data.history||[]).forEach(h=>{if(!h.id){h.id=novoId('treino');mudou=true}});return mudou}
 
@@ -700,9 +701,168 @@ function openVideo(ex){
 // Spotify nao volta sozinho. Destruir no fechamento libera o audio.
 $('#dlgVideo').addEventListener('close',()=>{const b=$('#videoBody');b.querySelectorAll('iframe').forEach(f=>{f.src='about:blank';f.remove()});b.innerHTML=''});
 
+
+/* ---------- Evolução semanal por exercício ---------- */
+function media(nums){
+  const v=nums.filter(n=>Number.isFinite(n));
+  return v.length?v.reduce((a,b)=>a+b,0)/v.length:null;
+}
+function fmt1(v){
+  if(v===null||v===undefined||!Number.isFinite(Number(v)))return '—';
+  return new Intl.NumberFormat('pt-BR',{maximumFractionDigits:1}).format(Number(v));
+}
+function metricasEvolucao(ex){
+  if(ex.kind==='plank')return{primary:'hold',primaryLabel:'Tempo',primaryUnit:'s/lado',secondary:null,secondaryLabel:''};
+  if(ex.kind==='bird')return{primary:'reps',primaryLabel:'Repetições',primaryUnit:'reps/lado',secondary:'hold',secondaryLabel:'s'};
+  if(ex.kind==='curl')return{primary:'reps',primaryLabel:'Repetições',primaryUnit:'reps',secondary:'hold',secondaryLabel:'s'};
+  if(ex.kind==='pallof')return{primary:'load',primaryLabel:'Carga',primaryUnit:'kg',secondary:'hold',secondaryLabel:'s/lado'};
+  return{primary:'load',primaryLabel:'Carga',primaryUnit:'kg',secondary:'reps',secondaryLabel:'reps'};
+}
+function sessaoParaEvolucao(ex,it){
+  if(!it||!Array.isArray(it.sets))return null;
+  const m=metricasEvolucao(ex);
+  const prim=media(it.sets.map(s=>numeric(s?.[m.primary])).filter(n=>n!==null));
+  if(prim===null)return null;
+  const sec=m.secondary?media(it.sets.map(s=>numeric(s?.[m.secondary])).filter(n=>n!==null)):null;
+  return{primary:prim,secondary:sec};
+}
+function semanaFimLabel(ws){
+  const ini=new Date(ws),fim=new Date(ws+6*864e5);
+  const a=ini.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
+  const b=fim.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
+  return `${a}–${b}`;
+}
+function labelSemanaCurto(ws,longo=false){
+  const d=new Date(ws);
+  if(longo)return d.toLocaleDateString('pt-BR',{month:'short',year:'2-digit'}).replace('.','');
+  return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
+}
+function dadosSemanaisExercicio(ex){
+  const atual=weekStart(new Date()),map=new Map(),hist=[...data.history].sort((a,b)=>new Date(a.iso)-new Date(b.iso));
+  hist.forEach(h=>{
+    const ws=weekStart(new Date(h.iso));
+    const it=(h.items||[]).find(x=>x.id===ex.id);
+    if(!it)return;
+    const s=sessaoParaEvolucao(ex,it);if(!s)return;
+    if(!map.has(ws))map.set(ws,[]);
+    map.get(ws).push(s);
+  });
+  const fechar=(ws,sessoes)=>({
+    week:ws,
+    primary:media(sessoes.map(s=>s.primary)),
+    secondary:media(sessoes.map(s=>s.secondary).filter(n=>n!==null)),
+    sessions:sessoes.length
+  });
+  const closed=[...map.entries()].filter(([ws])=>ws<atual).map(([ws,s])=>fechar(ws,s)).sort((a,b)=>a.week-b.week);
+  const current=map.has(atual)?fechar(atual,map.get(atual)):null;
+  return{closed,current};
+}
+function periodizarEvolucao(points){
+  if(evoPeriod==='all')return points;
+  const n=Number(evoPeriod)||12;
+  return points.slice(-n);
+}
+function tickStepEvolucao(n){
+  if(n<=12)return 1;
+  return Math.max(1,Math.ceil(n/8));
+}
+function exComMaisHistorico(){
+  const exs=allExercisesUnique();
+  if(!exs.length)return null;
+  let best=exs[0],score=-1;
+  exs.forEach(ex=>{const s=data.history.reduce((acc,h)=>acc+((h.items||[]).some(it=>it.id===ex.id)?1:0),0);if(s>score){score=s;best=ex}});
+  return best;
+}
+function renderEvolution(){
+  const sel=$('#evoExercise'),chart=$('#evoChart'),sum=$('#evoSummary'),cur=$('#evoCurrent'),detail=$('#evoDetail');
+  if(!sel||!chart||!sum||!cur||!detail)return;
+
+  const exs=allExercisesUnique();
+  if(!exs.length){
+    sel.innerHTML='';chart.innerHTML='<div class="evo-empty">Nenhum exercício disponível.</div>';sum.innerHTML='';cur.textContent='';detail.textContent='';return;
+  }
+  if(!evoExerciseId||!exs.some(e=>e.id===evoExerciseId))evoExerciseId=(exComMaisHistorico()||exs[0]).id;
+
+  sel.innerHTML=exs.map(ex=>`<option value="${escHtml(ex.id)}" ${ex.id===evoExerciseId?'selected':''}>${escHtml(ex.name)}</option>`).join('');
+  sel.onchange=()=>{evoExerciseId=sel.value;evoSelectedWeek=null;renderEvolution()};
+
+  $$('.evo-period').forEach(b=>{
+    b.classList.toggle('on',b.dataset.evoPeriod===evoPeriod);
+    b.onclick=()=>{evoPeriod=b.dataset.evoPeriod;evoSelectedWeek=null;renderEvolution()};
+  });
+
+  const ex=findEx(evoExerciseId)||exs[0],met=metricasEvolucao(ex),raw=dadosSemanaisExercicio(ex),pts=periodizarEvolucao(raw.closed);
+
+  if(raw.current){
+    const sec=raw.current.secondary!==null?` · ${fmt1(raw.current.secondary)} ${met.secondaryLabel}`:'';
+    cur.innerHTML=`<b>Semana atual em andamento:</b> ${fmt1(raw.current.primary)} ${met.primaryUnit}${sec} · ${raw.current.sessions} treino${raw.current.sessions>1?'s':''}. Ainda não entra na curva.`;
+  }else{
+    cur.innerHTML='<b>Semana atual em andamento:</b> ainda sem registro deste exercício.';
+  }
+
+  if(!pts.length){
+    sum.innerHTML='<div class="mini"><b>—</b><span>Evolução</span></div><div class="mini"><b>—</b><span>Melhor semana</span></div>';
+    chart.innerHTML='<div class="evo-empty">Ainda não há uma semana encerrada com dados deste exercício.</div>';
+    detail.textContent='O primeiro ponto aparecerá quando a semana atual terminar.';
+    return;
+  }
+
+  const first=pts[0],last=pts[pts.length-1],best=pts.reduce((a,b)=>b.primary>a.primary?b:a,pts[0]);
+  const delta=first.primary!==0?((last.primary-first.primary)/Math.abs(first.primary))*100:null;
+  const deltaTxt=delta===null?'—':`${delta>=0?'+':''}${fmt1(delta)}%`;
+  sum.innerHTML=`<div class="mini"><b>${fmt1(first.primary)} → ${fmt1(last.primary)} ${met.primaryUnit}</b><span>${deltaTxt} · ${pts.length} semana${pts.length>1?'s':''}</span></div><div class="mini"><b>${fmt1(best.primary)} ${met.primaryUnit}</b><span>Melhor semana · ${labelSemanaCurto(best.week)}</span></div>`;
+
+  const W=620,H=300,L=52,R=16,T=26,B=72,plotW=W-L-R,plotH=H-T-B;
+  const vals=pts.map(p=>p.primary),minV=Math.min(...vals),maxV=Math.max(...vals);
+  let span=maxV-minV;
+  if(span===0)span=Math.max(1,Math.abs(maxV)*.15||1);
+  let yMin=Math.max(0,minV-span*.18),yMax=maxV+span*.18;
+  if(yMax===yMin)yMax=yMin+1;
+
+  const x=(i)=>pts.length===1?L+plotW/2:L+(i/(pts.length-1))*plotW;
+  const y=(v)=>T+((yMax-v)/(yMax-yMin))*plotH;
+  const yTicks=4;
+  let svg=`<svg class="evo-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Evolução semanal de ${escHtml(ex.name)}">`;
+
+  for(let i=0;i<=yTicks;i++){
+    const v=yMax-(i/yTicks)*(yMax-yMin),yy=T+(i/yTicks)*plotH;
+    svg+=`<line class="evo-grid" x1="${L}" y1="${yy}" x2="${W-R}" y2="${yy}"/>`;
+    svg+=`<text class="evo-ylabel" x="${L-7}" y="${yy+3}" text-anchor="end">${escHtml(fmt1(v))}</text>`;
+  }
+  svg+=`<line class="evo-axis" x1="${L}" y1="${T}" x2="${L}" y2="${T+plotH}"/><line class="evo-axis" x1="${L}" y1="${T+plotH}" x2="${W-R}" y2="${T+plotH}"/>`;
+  svg+=`<text class="evo-axis-title" x="${L}" y="13">${escHtml(met.primaryLabel)} (${escHtml(met.primaryUnit)})</text>`;
+
+  const poly=pts.map((p,i)=>`${x(i)},${y(p.primary)}`).join(' ');
+  if(pts.length>1)svg+=`<polyline class="evo-line" points="${poly}"/>`;
+
+  const step=tickStepEvolucao(pts.length),longAxis=pts.length>26;
+  pts.forEach((p,i)=>{
+    const xx=x(i),yy=y(p.primary),selected=evoSelectedWeek===p.week?' active':'';
+    svg+=`<circle class="evo-dot${selected}" data-evo-index="${i}" cx="${xx}" cy="${yy}" r="${pts.length>40?3.5:4.8}"/>`;
+    const show=(i%step===0)||i===pts.length-1;
+    if(show){
+      const sec=p.secondary!==null?`(${fmt1(p.secondary)} ${met.secondaryLabel})`:'';
+      svg+=`<text class="evo-xlabel" x="${xx}" y="${T+plotH+18}" text-anchor="middle"><tspan x="${xx}" dy="0">${escHtml(labelSemanaCurto(p.week,longAxis))}</tspan>${sec?`<tspan x="${xx}" dy="11">${escHtml(sec)}</tspan>`:''}</text>`;
+    }
+  });
+  svg+='</svg>';
+  chart.innerHTML=svg;
+
+  const showDetail=(p)=>{
+    evoSelectedWeek=p.week;
+    const sec=p.secondary!==null?` · ${fmt1(p.secondary)} ${met.secondaryLabel}`:'';
+    detail.innerHTML=`<b>${semanaFimLabel(p.week)}</b> · ${fmt1(p.primary)} ${met.primaryUnit}${sec} · média de ${p.sessions} treino${p.sessions>1?'s':''} na semana.`;
+    chart.querySelectorAll('.evo-dot').forEach((c,j)=>c.classList.toggle('active',pts[j].week===p.week));
+  };
+  const initial=pts.find(p=>p.week===evoSelectedWeek)||last;
+  showDetail(initial);
+  chart.querySelectorAll('.evo-dot').forEach((c,i)=>c.onclick=()=>showDetail(pts[i]));
+}
+
 function renderProgress(){
   const total=data.history.length,week=countThisWeek(),st=streakWeeks();
   $('#stats').innerHTML=`<div class="stat card"><b>${total}</b><span>treinos</span></div><div class="stat card"><b>${week}/${phase().weekly}</b><span>esta semana</span></div><div class="stat card"><b>${st}</b><span>semanas seguidas</span></div>`;
+  renderEvolution();
   renderLoadProgress();
   const h=$('#history');h.innerHTML='';
   if(!data.history.length){h.innerHTML='<div class="card" style="padding:20px;text-align:center">Nenhum treino salvo ainda.</div>';return}
