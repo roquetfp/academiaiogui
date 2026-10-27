@@ -33,7 +33,7 @@ const PHASES=[
 {name:"A partir da semana 3",sets:2,reserve:"3-4 reps em reserva",note:"B entra apenas se não houver piora dos sintomas e a recuperação estiver boa.",weekly:3},
 {name:"Fase seguinte",sets:3,reserve:"2-3 reps em reserva",note:"Progressão de carga pelo critério de execução.",weekly:3}
 ]
-const APP_VERSAO="2.9.4";
+const APP_VERSAO="2.9.5";
 const STORAGE="iogui-v2";const OLD_STORAGE="treino-dados";
 const MAX_BACKUP_BYTES=5*1024*1024;
 const MAX_PROGRAM_BYTES=512*1024;
@@ -431,10 +431,33 @@ function openPicker(){const c=$("#pickList");c.innerHTML='';chavesTreino().forEa
 // Usa o registro mais recente daquele exercício no histórico. A cópia é feita
 // apenas ao CRIAR uma nova sessão; depois disso os campos continuam totalmente
 // editáveis e o usuário pode apagar ou reescrever qualquer valor.
-function setsDoUltimoRegistro(ex, quantidade){
+
+// Registros do exercício sempre ordenados pela DATA real, do mais recente
+// para o mais antigo. Assim exercícios repetidos em treinos diferentes (ex.:
+// leg press na terça e no sábado) usam a última execução de verdade, e não
+// "o último treino do mesmo dia da semana".
+function registrosExercicioOrdenados(exid){
+  return (data.history||[])
+    .map(h=>({h,it:(h.items||[]).find(x=>x.id===exid)}))
+    .filter(x=>x.it)
+    .sort((a,b)=>{
+      const tb=Date.parse(b.h?.iso||'')||0, ta=Date.parse(a.h?.iso||'')||0;
+      return tb-ta;
+    });
+}
+function ultimoRegistroExercicio(exid){
+  return registrosExercicioOrdenados(exid)[0]||null;
+}
+
+// Pré-preenchimento do próximo treino.
+// Além dos valores, mantém a QUANTIDADE DE SÉRIES usada na última execução
+// daquele exercício. Se ainda não há histórico, usa a quantidade da fase.
+function setsDoUltimoRegistro(ex, quantidadePadrao){
   const campos=fieldsFor(ex).map(f=>f.k);
-  for(const h of data.history){
-    const it=(h.items||[]).find(x=>x.id===ex.id);
+  const registros=registrosExercicioOrdenados(ex.id);
+
+  for(const rec of registros){
+    const it=rec.it;
     if(!it || !Array.isArray(it.sets))continue;
 
     const temAlgumValor=it.sets.some(set=>
@@ -442,6 +465,7 @@ function setsDoUltimoRegistro(ex, quantidade){
     );
     if(!temAlgumValor)continue;
 
+    const quantidade=Math.max(1,Math.min(4,it.sets.length||quantidadePadrao||1));
     return Array.from({length:quantidade},(_,i)=>{
       const destino=blankSet(ex), origem=it.sets[i];
       if(!origem || typeof origem!=='object')return destino;
@@ -452,7 +476,8 @@ function setsDoUltimoRegistro(ex, quantidade){
       return destino;
     });
   }
-  return Array.from({length:quantidade},()=>blankSet(ex));
+
+  return Array.from({length:Math.max(1,quantidadePadrao||1)},()=>blankSet(ex));
 }
 
 function startWorkout(k,opt={}){
@@ -473,8 +498,8 @@ function startWorkout(k,opt={}){
 function currentSession(){return data.inProgress}
 function currentEx(){const s=currentSession();return s?WORKOUTS[s.workout].ex[s.index]:null}
 function currentItem(){const s=currentSession();return s?s.items[s.index]:null}
-function lastItemFor(exid){for(const h of data.history){const it=(h.items||[]).find(x=>x.id===exid);if(it)return{h,it}}return null}
-function recentItemsFor(exid,n=2){const out=[];for(const h of data.history){const it=(h.items||[]).find(x=>x.id===exid);if(it){out.push({h,it});if(out.length>=n)break}}return out}
+function lastItemFor(exid){return ultimoRegistroExercicio(exid)}
+function recentItemsFor(exid,n=2){return registrosExercicioOrdenados(exid).slice(0,n)}
 function numeric(v){const n=parseFloat(String(v).replace(',','.'));return Number.isFinite(n)?n:null}
 function topReached(ex,rec){const it=rec?.it;if(!it||!it.sets?.length||ex.kind!=='strength')return false;const top=ex.range[1],required=(PHASES[rec.h?.phase??data.phase]||phase()).sets;const vals=it.sets.map(s=>numeric(s.reps)).filter(n=>n!=null);return vals.length>=required&&vals.every(n=>n>=top)&&it.signal==='v'}
 function progressionSuggestion(ex){const rec=recentItemsFor(ex.id,2);if(rec[0]?.it.signal==='r')return{kind:'redbox',text:'Última resposta foi vermelha: não progrida carga e discuta a resposta com o profissional que acompanha você.'};if(rec[0]?.it.signal==='a')return{kind:'warnbox',text:'Última resposta foi amarela: a prioridade é repetir com controle ou reduzir carga/amplitude/volume, conforme a resposta.'};if(data.phase<2)return{kind:'',text:data.phase===0?'Fase de aprendizagem: mantenha a carga fácil e concentre-se em banco, amplitude e técnica.':'Fase de adaptação: mantenha 3-4 repetições em reserva. Não aumente carga apenas porque mudou a semana.'};if(ex.kind!=='strength')return{kind:'',text:'Progrida primeiro pelo controle e pelo topo da faixa de tempo/repetições; carga não é a prioridade neste exercício.'};if(rec.length>=2&&rec.every(x=>topReached(ex,x)))return{kind:'',text:'Você atingiu o topo da faixa em duas sessões verdes. Se hoje a técnica e a amplitude permanecerem iguais, considere apenas o próximo incremento pequeno da máquina.'};if(rec.length&&topReached(ex,rec[0]))return{kind:'',text:'Você atingiu o topo da faixa na última sessão. Repita com a mesma técnica antes de pensar no próximo incremento.'};return{kind:'',text:'Mantenha a carga até alcançar o topo da faixa em todas as séries com técnica estável e reserva adequada.'}}
@@ -552,7 +577,7 @@ function restanteDescanso(){const d=lerDescanso();if(!d)return null;return Math.
    contexto e destravado no toque que inicia o descanso. O som so sai com o app
    em primeiro plano: em segundo plano o iOS congela o JavaScript da pagina. */
 
-let somTocado = false, bowlPrimed = false;
+let somTocado = false;
 const BOWL_START = 0.37; // depois do silêncio inicial
 
 function bowl(){
@@ -562,29 +587,8 @@ function bowl(){
 // Chamado diretamente pelo toque em "Descanso".
 // O mesmo <audio> toca apenas o trecho silencioso e é pausado antes da tigela.
 // Isso libera este elemento para tocar depois no iPhone sem emitir som agora.
-function prepararTigela(){
-  const a=bowl(); if(!a || bowlPrimed) return;
-  try{
-    a.pause();
-    a.currentTime=0;
-    const p=a.play();
-    if(p && typeof p.then==='function'){
-      p.then(()=>{
-        setTimeout(()=>{
-          try{
-            a.pause();
-            a.currentTime=BOWL_START;
-            bowlPrimed=true;
-          }catch(e){}
-        },80);
-      }).catch(()=>{});
-    }else{
-      setTimeout(()=>{
-        try{a.pause();a.currentTime=BOWL_START;bowlPrimed=true}catch(e){}
-      },80);
-    }
-  }catch(e){}
-}
+// O áudio não é mais pré-tocado ao iniciar o descanso.
+// Isso evita que o Iogui tome a sessão de mídia do Spotify.
 
 async function tocarTigela(mostrarErro=false){
   if(data.som && data.som.ativo === false) return false;
@@ -614,7 +618,9 @@ function tocarBipe(){
 }
 
 function startTimer(sec,name){
-  prepararTigela();
+  // Não toca nem "destrava" áudio neste clique. No iPhone, até um trecho
+  // silencioso de <audio> pode assumir a sessão de mídia e pausar o Spotify.
+  // A tigela só é tentada quando o cronômetro realmente chega a zero.
   gravarDescanso({fim:Date.now()+sec*1000,nome:name,total:sec,iniciado:Date.now(),origem:'botao-descanso'});
   somTocado = false;
   $('#timerLab').textContent=`Descanso · ${name}`;
@@ -1043,6 +1049,53 @@ function importData(file){
 }
 function updateInstallUI(){const b=$('#installBtn'),h=$('#installHint');if(installPrompt){b.disabled=false;b.textContent='Instalar Iogui';h.textContent='Instale como aplicativo para abrir em tela cheia e usar offline.'}else{b.disabled=false;b.textContent='Como instalar';h.textContent=/iPhone|iPad|iPod/.test(navigator.userAgent)?'No iPhone/iPad: toque em Compartilhar → Adicionar à Tela de Início.':'Se o botão automático não aparecer, use o menu do navegador → Instalar app / Adicionar à tela inicial.'}}
 async function installApp(){if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;updateInstallUI()}else alert($('#installHint').textContent)}
+
+
+/* ---------- Gestos no iPhone ----------
+   O CSS touch-action resolve a maior parte dos casos, mas o Safari em modo
+   instalado ainda pode interpretar dois toques rápidos como zoom.
+   Aqui bloqueamos apenas o gesto de DUPLO TOQUE. Se o segundo toque for em
+   um controle, reproduzimos o clique via JS para que tocar rápido em
+   Próximo/Anterior continue funcionando. Gestos com 2 dedos nunca entram
+   nesta regra, portanto pinch-to-zoom permanece disponível. */
+let ultimoToqueRapido={tempo:0,x:0,y:0}, gestoComDoisDedos=false;
+
+document.addEventListener('touchstart',e=>{
+  if(e.touches && e.touches.length>1){
+    gestoComDoisDedos=true;
+    ultimoToqueRapido.tempo=0;
+  }
+},{passive:true});
+
+document.addEventListener('touchend',e=>{
+  if(gestoComDoisDedos){
+    if(!e.touches || e.touches.length===0)gestoComDoisDedos=false;
+    return;
+  }
+  if(!e.changedTouches || e.changedTouches.length!==1 || (e.touches&&e.touches.length))return;
+
+  const t=e.changedTouches[0], agora=Date.now();
+  const dt=agora-ultimoToqueRapido.tempo;
+  const dx=t.clientX-ultimoToqueRapido.x, dy=t.clientY-ultimoToqueRapido.y;
+  const perto=(dx*dx+dy*dy)<=1600; // 40 px
+
+  if(dt>0 && dt<330 && perto){
+    const alvo=e.target?.closest?.('button,a,[role="button"]');
+    e.preventDefault(); // impede o double-tap-to-zoom
+    ultimoToqueRapido.tempo=0;
+
+    // preserva o segundo clique quando ele ocorreu em um controle
+    if(alvo && !alvo.disabled){
+      setTimeout(()=>{try{alvo.click()}catch(err){}},0);
+    }
+    return;
+  }
+
+  ultimoToqueRapido={tempo:agora,x:t.clientX,y:t.clientY};
+},{passive:false});
+
+document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
+
 
 // events
 $$('.navbtn').forEach(b=>b.onclick=()=>showView(b.dataset.view));$('#gear').onclick=()=>showView('settings');$('#startToday').onclick=()=>{const t=todayWorkout();if(t)startWorkout(t)};$('#chooseWorkout').onclick=openPicker;$('#sessionBack').onclick=()=>showView('home');$('#abortSession').onclick=abortSession;$('#timer').onclick=e=>{if(e.target.id==='timer')showView('home')};

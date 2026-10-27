@@ -177,6 +177,33 @@ dialog{border:3px solid var(--escuro);background:var(--papel);color:var(--escuro
    de double-tap-to-zoom que atrapalha toques rápidos nos controles. */
 *,*::before,*::after{touch-action:manipulation}
 
+
+/* Navegação do treino fixa: fica sempre acima da barra Início/Treino/Progresso/Ajustes. */
+#view-session{padding-bottom:92px}
+#view-session .session-nav{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%) translateZ(0);
+  bottom:calc(72px + env(safe-area-inset-bottom));
+  width:min(calc(100% - 30px),570px);
+  z-index:2147482500;
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:9px;
+  margin:0;
+  padding:8px;
+  background:var(--creme);
+  border:2px solid var(--escuro);
+  box-shadow:4px 4px 0 var(--escuro);
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+#view-session .session-nav .btn{width:100%;touch-action:pan-x pan-y pinch-zoom}
+
+/* Explicita o comportamento desejado: rolagem e pinça permitidas;
+   zoom por duplo toque é tratado pelo JS acima. */
+html,body,button,a,[role="button"]{touch-action:pan-x pan-y pinch-zoom}
+
 </style>
 </head>
 <body>
@@ -233,7 +260,7 @@ dialog{border:3px solid var(--escuro);background:var(--papel);color:var(--escuro
   <div class="settings-card card"><h3>Perfil e programa</h3><div class="form-row"><label>Nome</label><input id="cfgName" maxlength="30"></div><div class="form-row"><label>Início do programa</label><input id="cfgStart" type="date"></div><div class="form-row"><label>Fase</label><select id="cfgPhase"></select></div><div class="toggle"><input type="checkbox" id="cfgAuto"><label for="cfgAuto">Avançar automaticamente após marcar verde/amarelo</label></div><button class="btn blue" id="saveSettings">Salvar ajustes</button></div>
   <div class="settings-card card"><h3>App no celular</h3><p class="tiny muted" id="installHint">Se o navegador permitir, você pode instalar o Iogui como aplicativo.</p><button class="btn" id="installBtn">Instalar Iogui</button></div>
   <div class="settings-card card"><h3>Aviso sonoro do descanso</h3>
-    <p class="tiny muted">Ao terminar um descanso iniciado pelo botão, o Iogui toca uma <b>tigela tibetana gravada no próprio app</b>. Não depende mais do sintetizador de áudio do navegador.</p>
+    <p class="tiny muted">Ao iniciar o descanso, o Iogui <b>não acessa o áudio</b>, para não interromper Spotify ou outros players. A tigela só é tentada quando o cronômetro chega a zero.</p>
     <div class="toggle"><input type="checkbox" id="cfgSom"><label for="cfgSom">Tocar a tigela ao fim do descanso</label></div>
 
     <p class="tiny muted">Use <b>Testar som</b>: o áudio deve começar imediatamente. Se o iPhone suspender o app ou bloquear a tela, ao voltar o Iogui avisa visualmente, mas não toca um alarme atrasado.</p>
