@@ -82,7 +82,7 @@
         },
         {
           "id": "ponte",
-          "name": "Ponte com marcha",
+          "name": "Ponte unilateral",
           "target": "8-10/lado · 2s no topo",
           "rest": 60,
           "kind": "bird",
@@ -90,7 +90,7 @@
             8,
             10
           ],
-          "tip": "Deitado de costas, suba o quadril até a linha reta do joelho ao ombro e levante uma perna de cada vez.<br><b>O quadril não pode cair nem rodar quando a perna sobe</b> — imagine uma bandeja de água na bacia que não pode derramar.<br>Não arqueie a lombar para ganhar altura: o topo é a linha reta, não mais. Registre as repetições por lado e os 2s de pausa no topo."
+          "tip": "Deitado de costas, suba o quadril até a linha reta do joelho ao ombro. Com o quadril no alto, <b>estenda uma perna, deixando o joelho reto</b>, segure 2s, recolha e troque.<br><b>O critério não é conforto, é a bacia.</b> Ela não pode cair nem rodar quando a perna estende — imagine uma bandeja de água apoiada nela que não pode derramar. Se a bacia desabar antes da última repetição, termine a série com o joelho dobrado em vez de estendido.<br>Três níveis, do mais fácil ao mais difícil: ponte com os dois pés no chão; ponte levantando o joelho dobrado; ponte estendendo a perna. <b>Suba de nível quando a bacia ficar parada, não quando ficar fácil.</b><br>Não arqueie a lombar para ganhar altura: o topo é a linha reta. Se a posterior da coxa de apoio começar a travar, aproxime o pé do glúteo e empurre com o glúteo, não com o calcanhar."
         },
         {
           "id": "farmer",
