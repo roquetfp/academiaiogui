@@ -91,6 +91,18 @@
             10
           ],
           "tip": "Deitado de costas, suba o quadril até a linha reta do joelho ao ombro e levante uma perna de cada vez.<br><b>O quadril não pode cair nem rodar quando a perna sobe</b> — imagine uma bandeja de água na bacia que não pode derramar.<br>Não arqueie a lombar para ganhar altura: o topo é a linha reta, não mais. Registre as repetições por lado e os 2s de pausa no topo."
+        },
+        {
+          "id": "farmer",
+          "name": "Farmer hold",
+          "target": "3 séries × 45-60s · halter em cada mão",
+          "rest": 90,
+          "kind": "pallof",
+          "range": [
+            45,
+            60
+          ],
+          "tip": "Um halter pesado em cada mão, em pé, braços ao lado do corpo. Só segure, parado, pelo tempo marcado.<br><b>Ombros para trás e para baixo, costelas encaixadas, sem inclinar para nenhum lado.</b> O corpo fica na vertical como se não houvesse peso.<br><b>É o ensaio do carregamento, com a dose sob seu controle.</b> Os extensores da lombar seguram o tronco ereto exatamente como quando você carrega equipamento — só que aqui você escolhe o peso e o tempo.<br>Comece com o halter que você aguenta 45s com postura limpa e suba só quando fizer 60s nas três séries. Se a lombar ficar dolorida no dia seguinte, reduza o peso: a dose passou.<br>Respire normalmente. Registre o peso de <b>um</b> halter no campo de carga.<br>Quando as duas pranchas chegarem a 40s, isto vira caminhada carregada e depois suitcase carry, com peso de um lado só."
         }
       ]
     },
@@ -275,6 +287,18 @@
             20
           ],
           "tip": "Carga muito leve. <b>Apenas impeça o corpo de girar.</b> Único exercício de core que fica nos treinos de academia: ele não é do Big 3 e treina anti-rotação em pé, com carga.<br>Já está em 20s: o próximo passo é o Pallof press, mesma carga, estendendo e recolhendo os braços."
+        },
+        {
+          "id": "farmer",
+          "name": "Farmer hold",
+          "target": "3 séries × 45-60s · halter em cada mão",
+          "rest": 90,
+          "kind": "pallof",
+          "range": [
+            45,
+            60
+          ],
+          "tip": "Um halter pesado em cada mão, em pé, braços ao lado do corpo. Só segure, parado, pelo tempo marcado.<br><b>Ombros para trás e para baixo, costelas encaixadas, sem inclinar para nenhum lado.</b> O corpo fica na vertical como se não houvesse peso.<br><b>É o ensaio do carregamento, com a dose sob seu controle.</b> Os extensores da lombar seguram o tronco ereto exatamente como quando você carrega equipamento — só que aqui você escolhe o peso e o tempo.<br>Comece com o halter que você aguenta 45s com postura limpa e suba só quando fizer 60s nas três séries. Se a lombar ficar dolorida no dia seguinte, reduza o peso: a dose passou.<br>Respire normalmente. Registre o peso de <b>um</b> halter no campo de carga.<br>Quando as duas pranchas chegarem a 40s, isto vira caminhada carregada e depois suitcase carry, com peso de um lado só."
         }
       ]
     },
@@ -347,14 +371,14 @@
         {
           "id": "ywbrucos",
           "name": "Y-W de bruços",
-          "target": "10-15 · 2s na posição W",
+          "target": "2×10-15 reps + 1 sustentação de 20-30s",
           "rest": 45,
           "kind": "curl",
           "range": [
             10,
             15
           ],
-          "tip": "Deitado de bruços, testa apoiada ou olhando para o chão. Estenda os braços à frente formando um V, depois <b>puxe os cotovelos para junto das costelas</b>, como se guardasse as mãos nos bolsos de trás. Segure 2s nessa posição e volte ao V.<br><b>O movimento é das escápulas, não dos braços.</b> Pense em descer e juntar as omoplatas.<br><b>O peito sobe muito pouco do chão — poucos centímetros.</b> Se o peito subir alto, vira superman e passa a ser extensão lombar sob o peso do tronco, que é o que você quer evitar. As pernas ficam no chão o tempo todo.<br>Queixo recolhido, pescoço neutro: não olhe para a frente.<br>2s para abrir, 2s para puxar. Sem impulso. Sem peso nas mãos."
+          "tip": "Deitado de bruços, testa apoiada ou olhando para o chão. Estenda os braços à frente formando um V, depois <b>puxe os cotovelos para junto das costelas</b>, como se guardasse as mãos nos bolsos de trás. Segure 2s e volte ao V.<br><b>O movimento é das escápulas, não dos braços.</b> Pense em descer e juntar as omoplatas.<br><b>O peito sobe muito pouco do chão — poucos centímetros.</b> Se o peito subir alto, vira superman e passa a ser extensão lombar sob o peso do tronco. As pernas ficam no chão o tempo todo.<br>Queixo recolhido, pescoço neutro: não olhe para a frente. 2s para abrir, 2s para puxar, sem impulso e sem peso nas mãos.<br><b>Terceira série diferente: fique parado na posição W por 20 a 30 segundos.</b> A dor no meio das costas ao tocar não é falta de força, é falta de resistência numa posição mantida — e é a sustentação longa que treina isso. Registre esse tempo no campo de segundos."
         },
         {
           "id": "agachparede",
