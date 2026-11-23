@@ -1,4 +1,4 @@
-const CACHE='iogui-v2.9.11-shell-v1';
+const CACHE='iogui-v2.9.12-shell-v1';
 const CORE=['./','./index.html','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
 
 self.addEventListener('install',event=>{

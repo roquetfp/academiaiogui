@@ -1,10 +1,11 @@
 {
-  "nome": "Ficha inicial — hérnia L4/L5 e L5/S1",
-  "versao": "2026-09-06",
+  "nome": "Ficha 2 — hérnia L4/L5 e L5/S1 · Big 3 em bloco próprio",
+  "versao": "2026-11-22",
   "treinos": {
     "A": {
       "day": "Terça",
       "weekday": 2,
+      "grupo": "musculacao",
       "bloqueadoFase0": false,
       "ex": [
         {
@@ -17,7 +18,7 @@
             10,
             12
           ],
-          "tip": "Rampa inclinada, pés na largura dos ombros. <b>Desça só até antes de sentir a bacia começar a girar para trás.</b> Não é preciso trazer os joelhos perto do peito. Sempre bilateral nesta fase."
+          "tip": "Rampa inclinada, pés na largura dos ombros. <b>Desça só até antes de sentir a bacia começar a girar para trás.</b> Não é preciso trazer os joelhos perto do peito. Sempre bilateral."
         },
         {
           "id": "flexora",
@@ -29,7 +30,7 @@
             12,
             15
           ],
-          "tip": "Sentado, rolo atrás das panturrilhas, costas totalmente apoiadas. Sem deslocar o quadril para buscar mais amplitude."
+          "tip": "Sentado, rolo atrás das panturrilhas, costas totalmente apoiadas. Sem deslocar o quadril para buscar mais amplitude.<br><b>Você está em 12 repetições com 50 kg: a faixa é 12-15. Ganhe as repetições antes de subir a carga.</b>"
         },
         {
           "id": "chest",
@@ -65,7 +66,7 @@
             12,
             15
           ],
-          "tip": "Banco com encosto e halteres leves. Suba até a linha dos ombros sem inclinar o tronco."
+          "tip": "Banco com encosto e halteres leves. Suba até a linha dos ombros sem inclinar o tronco.<br><b>Faixa 12-15: ganhe repetições com 7 kg antes de pegar o halter de 8.</b>"
         },
         {
           "id": "panturrilha",
@@ -77,25 +78,26 @@
             15,
             20
           ],
-          "tip": "Movimento controlado. Nesta fase, prefira a versão sentada; a versão em pé não é proibida para sempre."
+          "tip": "Movimento controlado, pausa de 1s embaixo e 1s em cima.<br><b>Atenção: você tem feito 12 repetições, mas a faixa aqui é 15-20. Mantenha 25 kg e suba para 15 antes de pensar em carga.</b>"
         },
         {
-          "id": "birddog",
-          "name": "Bird dog",
-          "target": "6-8/lado · 6-8s",
-          "rest": 45,
+          "id": "ponte",
+          "name": "Ponte com marcha",
+          "target": "8-10/lado · 2s no topo",
+          "rest": 60,
           "kind": "bird",
           "range": [
-            6,
-            8
+            8,
+            10
           ],
-          "tip": "Quatro apoios, coluna neutra. Braço e perna opostos <b>até a linha do corpo, não acima</b>. Mantenha a pelve estável."
+          "tip": "Deitado de costas, suba o quadril até a linha reta do joelho ao ombro e levante uma perna de cada vez.<br><b>O quadril não pode cair nem rodar quando a perna sobe</b> — imagine uma bandeja de água na bacia que não pode derramar.<br>Não arqueie a lombar para ganhar altura: o topo é a linha reta, não mais. Registre as repetições por lado e os 2s de pausa no topo."
         }
       ]
     },
     "B": {
       "day": "Quinta",
       "weekday": 4,
+      "grupo": "musculacao",
       "bloqueadoFase0": true,
       "ex": [
         {
@@ -108,7 +110,7 @@
             12,
             15
           ],
-          "tip": "Costas apoiadas. Não use o tronco para ajudar."
+          "tip": "Costas apoiadas. Não use o tronco para ajudar.<br><b>Faixa 12-15: ganhe repetições antes de subir carga.</b>"
         },
         {
           "id": "extensora",
@@ -120,7 +122,7 @@
             12,
             15
           ],
-          "tip": "Costas no encosto e quadril estável durante toda a série."
+          "tip": "Costas no encosto e quadril estável durante toda a série.<br><b>Faixa 12-15: ganhe repetições antes de subir carga.</b>"
         },
         {
           "id": "pulldown",
@@ -132,7 +134,7 @@
             10,
             12
           ],
-          "tip": "Puxe até a clavícula <b>sem inclinar nem balançar o tronco</b>. Nunca atrás da nuca."
+          "tip": "Puxe até a clavícula <b>sem inclinar nem balançar o tronco</b>. Nunca atrás da nuca.<br><b>Parada em 40 kg desde outubro, sempre com 12 repetições fáceis. Suba para 45 kg.</b>"
         },
         {
           "id": "desenv",
@@ -144,7 +146,7 @@
             10,
             12
           ],
-          "tip": "Encosto alto e carga leve. Se precisar arquear a lombar para empurrar, reduza a carga."
+          "tip": "Encosto alto. Se precisar arquear a lombar para empurrar, reduza a carga.<br><b>12 repetições fáceis com 30 kg: suba para 35.</b>"
         },
         {
           "id": "rosca",
@@ -156,7 +158,7 @@
             10,
             12
           ],
-          "tip": "Banco com encosto, cotovelos junto ao tronco e sem impulso das costas."
+          "tip": "Banco com encosto, cotovelos junto ao tronco e sem impulso das costas.<br><b>Parada em 7 kg desde o começo. Suba para 8.</b>"
         },
         {
           "id": "abdutora",
@@ -168,25 +170,26 @@
             12,
             15
           ],
-          "tip": "Empurre os apoios para fora. Não force amplitude final se a pelve começar a se mover."
+          "tip": "Empurre os apoios para fora. Não force amplitude final se a pelve começar a se mover.<br><b>Faixa 12-15: ganhe repetições antes de subir carga.</b>"
         },
         {
-          "id": "prancha",
-          "name": "Prancha lateral",
-          "target": "20-30s/lado",
-          "rest": 45,
-          "kind": "plank",
+          "id": "hiperext",
+          "name": "Hiperextensão lombar",
+          "target": "10-15 · peso do corpo",
+          "rest": 90,
+          "kind": "strength",
           "range": [
-            20,
-            30
+            10,
+            15
           ],
-          "tip": "Comece com joelhos flexionados a 90° se necessário. Progrida quando mantiver alinhamento limpo."
+          "tip": "Banco de hiperextensão. <b>A almofada fica abaixo da crista ilíaca, deixando a dobra do quadril livre</b> — se ela subir para a barriga, todo o movimento sai da coluna.<br><b>Suba só até a linha reta do corpo, nunca acima.</b> Passar da linha é onde a compressão nas facetas e no disco posterior dispara.<br>2s para descer, 2s para subir. Nunca caia no fundo e use o repique.<br>Só peso do corpo. Anilha no peito apenas depois que a prancha lateral chegar a 40s limpos. Deixe o campo de carga em branco."
         }
       ]
     },
     "C": {
       "day": "Sábado",
       "weekday": 6,
+      "grupo": "musculacao",
       "bloqueadoFase0": false,
       "ex": [
         {
@@ -199,7 +202,7 @@
             10,
             12
           ],
-          "tip": "<b>Subiu → alinhou → contraiu os glúteos → parou.</b> Não ganhe altura arqueando a lombar."
+          "tip": "<b>Subiu → alinhou → contraiu os glúteos → parou.</b> Não ganhe altura arqueando a lombar.<br><b>12 repetições fáceis com 40 kg: suba para 45.</b>"
         },
         {
           "id": "legpress",
@@ -211,7 +214,7 @@
             10,
             12
           ],
-          "tip": "Mesma técnica da terça. Pare antes de a pelve começar a girar para trás."
+          "tip": "Mesma técnica da terça. Pare antes de a pelve começar a girar para trás.<br><b>12 repetições fáceis com 65 kg: suba para 70.</b>"
         },
         {
           "id": "peck",
@@ -223,7 +226,7 @@
             10,
             12
           ],
-          "tip": "Costas apoiadas, cotovelos levemente flexionados e sem impulso do tronco."
+          "tip": "Costas apoiadas, cotovelos levemente flexionados e sem impulso do tronco.<br><b>12 repetições fáceis com 50 kg: suba para 55.</b>"
         },
         {
           "id": "pulldownN",
@@ -235,7 +238,7 @@
             10,
             12
           ],
-          "tip": "Tronco quase vertical e estável. Não transforme a puxada em extensão do tronco."
+          "tip": "Tronco quase vertical e estável. Não transforme a puxada em extensão do tronco.<br><b>12 repetições fáceis com 50 kg: suba para 55.</b>"
         },
         {
           "id": "triceps",
@@ -259,7 +262,7 @@
             10,
             12
           ],
-          "tip": "Banco com encosto, palmas uma para a outra e cotovelos próximos ao corpo."
+          "tip": "Banco com encosto, palmas uma para a outra e cotovelos próximos ao corpo.<br><b>Parada em 8 kg desde setembro. Suba para 10.</b>"
         },
         {
           "id": "pallof",
@@ -271,19 +274,87 @@
             15,
             20
           ],
-          "tip": "Carga muito leve. <b>Apenas impeça o corpo de girar.</b> Quando 20s estiverem confortáveis, o próximo passo é Pallof press."
-        },
+          "tip": "Carga muito leve. <b>Apenas impeça o corpo de girar.</b> Único exercício de core que fica nos treinos de academia: ele não é do Big 3 e treina anti-rotação em pé, com carga.<br>Já está em 20s: o próximo passo é o Pallof press, mesma carga, estendendo e recolhendo os braços."
+        }
+      ]
+    },
+    "D": {
+      "day": "Segunda, quarta e sexta",
+      "weekday": 1,
+      "grupo": "coluna",
+      "bloqueadoFase0": false,
+      "ex": [
         {
-          "id": "curlup",
-          "name": "McGill curl-up",
-          "target": "6-8 · 8s",
-          "rest": 45,
+          "id": "catcamel",
+          "name": "Cat-camel",
+          "target": "6-8 ciclos · aquecimento",
+          "rest": 15,
           "kind": "curl",
           "range": [
             6,
             8
           ],
-          "tip": "Preserve a curvatura da lombar. Suba apenas cabeça e ombros como um bloco; a lombar não deve achatar no chão."
+          "tip": "Quatro apoios. Alterne devagar entre arredondar as costas para cima e deixá-las ceder para baixo.<br><b>A intenção é movimento, não alongamento.</b> Não force o fim do arco — você está reduzindo a viscosidade do tecido, não ganhando amplitude.<br>Registre só os ciclos; deixe o campo de segundos em branco."
+        },
+        {
+          "id": "curlup",
+          "name": "McGill curl-up",
+          "target": "8-6-4 · 8s cada",
+          "rest": 45,
+          "kind": "curl",
+          "range": [
+            4,
+            8
+          ],
+          "tip": "Uma perna dobrada com o pé no chão, a outra esticada. <b>Mãos embaixo da lombar, palmas para baixo</b>, para preservar a curvatura — ela não pode achatar. Língua no céu da boca.<br>Suba cabeça, pescoço e ombros <b>como um bloco rígido</b>, poucos centímetros. Não é abdominal: o queixo não vai ao peito.<br>Pirâmide decrescente: 8, depois 6, depois 4 repetições de 8s. <b>Troque a perna dobrada entre as séries.</b><br>Se a mão embaixo das costas deixar de sentir pressão, a lombar achatou."
+        },
+        {
+          "id": "pranchalat",
+          "name": "Prancha lateral",
+          "target": "20-40s/lado · meta 40s",
+          "rest": 45,
+          "kind": "plank",
+          "range": [
+            20,
+            40
+          ],
+          "tip": "Cotovelo embaixo do ombro, antebraço perpendicular ao corpo, mão livre no ombro oposto. Comece com joelhos a 90°.<br>Linha reta do joelho ao ombro, glúteo apertado. <b>O tronco não roda: o peito aponta para a parede, não para o chão.</b><br><b>Meta 40s por lado — é o critério formal para abrir a próxima fase</b> (carregamentos e dobradiça de quadril). Suba 5s na primeira sustentação por semana.<br>Tempo com quadril caído não conta. Encerre firme em vez de chegar aos 40 desabado.<br>O app mostra 's/lado': registre o tempo de um lado."
+        },
+        {
+          "id": "pranchafrontal",
+          "name": "Prancha frontal",
+          "target": "20-40s · meta 40s",
+          "rest": 45,
+          "kind": "plank",
+          "range": [
+            20,
+            40
+          ],
+          "tip": "Antebraços no chão, cotovelos sob os ombros, corpo numa linha só. Glúteo e abdômen contraídos juntos. <b>O quadril não cede para baixo nem sobe em V.</b> Pescoço neutro, olhando um palmo à frente das mãos.<br><b>Meta 40s — o segundo critério da próxima fase, junto com a prancha lateral.</b> Teste quanto aguenta limpo e suba 5s por semana.<br>Aqui o tempo não é por lado: o app mostra 's/lado', mas registre o tempo total da sustentação."
+        },
+        {
+          "id": "birddog",
+          "name": "Bird dog",
+          "target": "8-6-4/lado · 8s cada",
+          "rest": 45,
+          "kind": "bird",
+          "range": [
+            4,
+            8
+          ],
+          "tip": "Quatro apoios, abdômen contraído de leve. Braço e perna opostos estendidos ao mesmo tempo.<br><b>A perna sobe só até a horizontal, nunca acima da linha do quadril.</b> Imagine um copo d'água na lombar que não pode derramar.<br><b>O quadril não roda:</b> as duas cristas ilíacas ficam paralelas ao chão do começo ao fim.<br>Sustente 8s. Ao voltar, varra o chão com a mão e o joelho sem encostar.<br>Pirâmide decrescente: 8, 6 e 4 repetições de cada lado. <b>Nunca aumente o tempo da sustentação — só o número de repetições.</b>"
+        },
+        {
+          "id": "agachparede",
+          "name": "Agachamento isométrico na parede",
+          "target": "4 séries × 120s",
+          "rest": 120,
+          "kind": "plank",
+          "range": [
+            120,
+            120
+          ],
+          "tip": "Costas na parede, pés a uns 50 cm, joelhos perto de 90° e sobre os tornozelos. Fique parado 2 minutos. Quatro séries — <b>use o botão de adicionar série para a quarta</b>.<br><b>Respire normalmente, nunca prenda o ar.</b> Isométrico eleva a pressão arterial de forma aguda e prender a respiração multiplica o efeito.<br>Ajuste o ângulo do joelho, não o tempo: os últimos 30s de cada série devem ser difíceis mas sustentáveis.<br>Isto é tratamento de pressão arterial, não cardio: não gera prana no Sopro Firme.<br>O app mostra 's/lado': registre os 120s de cada série."
         }
       ]
     }
