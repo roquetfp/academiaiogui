@@ -345,6 +345,18 @@
           "tip": "Quatro apoios, abdômen contraído de leve. Braço e perna opostos estendidos ao mesmo tempo.<br><b>A perna sobe só até a horizontal, nunca acima da linha do quadril.</b> Imagine um copo d'água na lombar que não pode derramar.<br><b>O quadril não roda:</b> as duas cristas ilíacas ficam paralelas ao chão do começo ao fim.<br>Sustente 8s. Ao voltar, varra o chão com a mão e o joelho sem encostar.<br>Pirâmide decrescente: 8, 6 e 4 repetições de cada lado. <b>Nunca aumente o tempo da sustentação — só o número de repetições.</b>"
         },
         {
+          "id": "ywbrucos",
+          "name": "Y-W de bruços",
+          "target": "10-15 · 2s na posição W",
+          "rest": 45,
+          "kind": "curl",
+          "range": [
+            10,
+            15
+          ],
+          "tip": "Deitado de bruços, testa apoiada ou olhando para o chão. Estenda os braços à frente formando um V, depois <b>puxe os cotovelos para junto das costelas</b>, como se guardasse as mãos nos bolsos de trás. Segure 2s nessa posição e volte ao V.<br><b>O movimento é das escápulas, não dos braços.</b> Pense em descer e juntar as omoplatas.<br><b>O peito sobe muito pouco do chão — poucos centímetros.</b> Se o peito subir alto, vira superman e passa a ser extensão lombar sob o peso do tronco, que é o que você quer evitar. As pernas ficam no chão o tempo todo.<br>Queixo recolhido, pescoço neutro: não olhe para a frente.<br>2s para abrir, 2s para puxar. Sem impulso. Sem peso nas mãos."
+        },
+        {
           "id": "agachparede",
           "name": "Agachamento isométrico na parede",
           "target": "4 séries × 120s",
