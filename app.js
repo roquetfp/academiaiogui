@@ -1,11 +1,11 @@
-const WORKOUTS_PADRAO={"A":{"day":"Terça","weekday":2,"grupo":"musculacao","bloqueadoFase0":false,"ex":[{"id":"legpress","name":"Leg press 45°","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Rampa inclinada, pés na largura dos ombros. <b>Desça só até antes de sentir a bacia começar a girar para trás.</b> Não é preciso trazer os joelhos perto do peito. Sempre bilateral."},{"id":"flexora","name":"Cadeira flexora","target":"12-15","rest":90,"kind":"strength","range":[12,15],"tip":"Sentado, rolo atrás das panturrilhas, costas totalmente apoiadas. Sem deslocar o quadril para buscar mais amplitude.<br><b>Você está em 12 repetições com 50 kg: a faixa é 12-15. Ganhe as repetições antes de subir a carga.</b>"},{"id":"chest","name":"Supino na máquina","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Manoplas na altura do meio do peito. Costas no encosto; <b>não arqueie a lombar para completar a repetição</b>. Volta controlada."},{"id":"remada","name":"Remada com apoio no peito","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Peito apoiado. Não retire o peito do apoio nem balance o tronco para puxar mais peso."},{"id":"lateral","name":"Elevação lateral sentado","target":"12-15","rest":60,"kind":"strength","range":[12,15],"tip":"Banco com encosto e halteres leves. Suba até a linha dos ombros sem inclinar o tronco.<br><b>Faixa 12-15: ganhe repetições com 7 kg antes de pegar o halter de 8.</b>"},{"id":"panturrilha","name":"Panturrilha sentado","target":"15-20","rest":60,"kind":"strength","range":[15,20],"tip":"Movimento controlado, pausa de 1s embaixo e 1s em cima.<br><b>Atenção: você tem feito 12 repetições, mas a faixa aqui é 15-20. Mantenha 25 kg e suba para 15 antes de pensar em carga.</b>"},{"id":"ponte","name":"Ponte com marcha","target":"8-10/lado · 2s no topo","rest":60,"kind":"bird","range":[8,10],"tip":"Deitado de costas, suba o quadril até a linha reta do joelho ao ombro e levante uma perna de cada vez.<br><b>O quadril não pode cair nem rodar quando a perna sobe</b> — imagine uma bandeja de água na bacia que não pode derramar.<br>Não arqueie a lombar para ganhar altura: o topo é a linha reta, não mais. Registre as repetições por lado e os 2s de pausa no topo."}]},"B":{"day":"Quinta","weekday":4,"grupo":"musculacao","bloqueadoFase0":true,"ex":[{"id":"flexora","name":"Cadeira flexora","target":"12-15","rest":90,"kind":"strength","range":[12,15],"tip":"Costas apoiadas. Não use o tronco para ajudar.<br><b>Faixa 12-15: ganhe repetições antes de subir carga.</b>"},{"id":"extensora","name":"Cadeira extensora","target":"12-15","rest":90,"kind":"strength","range":[12,15],"tip":"Costas no encosto e quadril estável durante toda a série.<br><b>Faixa 12-15: ganhe repetições antes de subir carga.</b>"},{"id":"pulldown","name":"Puxada frontal","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Puxe até a clavícula <b>sem inclinar nem balançar o tronco</b>. Nunca atrás da nuca.<br><b>Parada em 40 kg desde outubro, sempre com 12 repetições fáceis. Suba para 45 kg.</b>"},{"id":"desenv","name":"Desenvolvimento na máquina","target":"10-12","rest":90,"kind":"strength","range":[10,12],"tip":"Encosto alto. Se precisar arquear a lombar para empurrar, reduza a carga.<br><b>12 repetições fáceis com 30 kg: suba para 35.</b>"},{"id":"rosca","name":"Rosca direta sentado","target":"10-12","rest":60,"kind":"strength","range":[10,12],"tip":"Banco com encosto, cotovelos junto ao tronco e sem impulso das costas.<br><b>Parada em 7 kg desde o começo. Suba para 8.</b>"},{"id":"abdutora","name":"Cadeira abdutora","target":"12-15","rest":60,"kind":"strength","range":[12,15],"tip":"Empurre os apoios para fora. Não force amplitude final se a pelve começar a se mover.<br><b>Faixa 12-15: ganhe repetições antes de subir carga.</b>"},{"id":"hiperext","name":"Hiperextensão lombar","target":"10-15 · peso do corpo","rest":90,"kind":"strength","range":[10,15],"tip":"Banco de hiperextensão. <b>A almofada fica abaixo da crista ilíaca, deixando a dobra do quadril livre</b> — se ela subir para a barriga, todo o movimento sai da coluna.<br><b>Suba só até a linha reta do corpo, nunca acima.</b> Passar da linha é onde a compressão nas facetas e no disco posterior dispara.<br>2s para descer, 2s para subir. Nunca caia no fundo e use o repique.<br>Só peso do corpo. Anilha no peito apenas depois que a prancha lateral chegar a 40s limpos. Deixe o campo de carga em branco."}]},"C":{"day":"Sábado","weekday":6,"grupo":"musculacao","bloqueadoFase0":false,"ex":[{"id":"hipthrust","name":"Elevação pélvica (hip thrust)","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"<b>Subiu → alinhou → contraiu os glúteos → parou.</b> Não ganhe altura arqueando a lombar.<br><b>12 repetições fáceis com 40 kg: suba para 45.</b>"},{"id":"legpress","name":"Leg press 45°","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Mesma técnica da terça. Pare antes de a pelve começar a girar para trás.<br><b>12 repetições fáceis com 65 kg: suba para 70.</b>"},{"id":"peck","name":"Peck deck","target":"10-12","rest":90,"kind":"strength","range":[10,12],"tip":"Costas apoiadas, cotovelos levemente flexionados e sem impulso do tronco.<br><b>12 repetições fáceis com 50 kg: suba para 55.</b>"},{"id":"pulldownN","name":"Puxada pegada neutra","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Tronco quase vertical e estável. Não transforme a puxada em extensão do tronco.<br><b>12 repetições fáceis com 50 kg: suba para 55.</b>"},{"id":"triceps","name":"Tríceps na polia com corda","target":"10-12","rest":60,"kind":"strength","range":[10,12],"tip":"Fique ereto. Se precisar inclinar o tronco para terminar, a série acabou."},{"id":"martelo","name":"Rosca martelo","target":"10-12","rest":60,"kind":"strength","range":[10,12],"tip":"Banco com encosto, palmas uma para a outra e cotovelos próximos ao corpo.<br><b>Parada em 8 kg desde setembro. Suba para 10.</b>"},{"id":"pallof","name":"Pallof hold","target":"15-20s/lado","rest":45,"kind":"pallof","range":[15,20],"tip":"Carga muito leve. <b>Apenas impeça o corpo de girar.</b> Único exercício de core que fica nos treinos de academia: ele não é do Big 3 e treina anti-rotação em pé, com carga.<br>Já está em 20s: o próximo passo é o Pallof press, mesma carga, estendendo e recolhendo os braços."}]},"D":{"day":"Segunda, quarta e sexta","weekday":1,"grupo":"coluna","bloqueadoFase0":false,"ex":[{"id":"catcamel","name":"Cat-camel","target":"6-8 ciclos · aquecimento","rest":15,"kind":"curl","range":[6,8],"tip":"Quatro apoios. Alterne devagar entre arredondar as costas para cima e deixá-las ceder para baixo.<br><b>A intenção é movimento, não alongamento.</b> Não force o fim do arco — você está reduzindo a viscosidade do tecido, não ganhando amplitude.<br>Registre só os ciclos; deixe o campo de segundos em branco."},{"id":"curlup","name":"McGill curl-up","target":"8-6-4 · 8s cada","rest":45,"kind":"curl","range":[4,8],"tip":"Uma perna dobrada com o pé no chão, a outra esticada. <b>Mãos embaixo da lombar, palmas para baixo</b>, para preservar a curvatura — ela não pode achatar. Língua no céu da boca.<br>Suba cabeça, pescoço e ombros <b>como um bloco rígido</b>, poucos centímetros. Não é abdominal: o queixo não vai ao peito.<br>Pirâmide decrescente: 8, depois 6, depois 4 repetições de 8s. <b>Troque a perna dobrada entre as séries.</b><br>Se a mão embaixo das costas deixar de sentir pressão, a lombar achatou."},{"id":"pranchalat","name":"Prancha lateral","target":"20-40s/lado · meta 40s","rest":45,"kind":"plank","range":[20,40],"tip":"Cotovelo embaixo do ombro, antebraço perpendicular ao corpo, mão livre no ombro oposto. Comece com joelhos a 90°.<br>Linha reta do joelho ao ombro, glúteo apertado. <b>O tronco não roda: o peito aponta para a parede, não para o chão.</b><br><b>Meta 40s por lado — é o critério formal para abrir a próxima fase</b> (carregamentos e dobradiça de quadril). Suba 5s na primeira sustentação por semana.<br>Tempo com quadril caído não conta. Encerre firme em vez de chegar aos 40 desabado.<br>O app mostra 's/lado': registre o tempo de um lado."},{"id":"pranchafrontal","name":"Prancha frontal","target":"20-40s · meta 40s","rest":45,"kind":"plank","range":[20,40],"tip":"Antebraços no chão, cotovelos sob os ombros, corpo numa linha só. Glúteo e abdômen contraídos juntos. <b>O quadril não cede para baixo nem sobe em V.</b> Pescoço neutro, olhando um palmo à frente das mãos.<br><b>Meta 40s — o segundo critério da próxima fase, junto com a prancha lateral.</b> Teste quanto aguenta limpo e suba 5s por semana.<br>Aqui o tempo não é por lado: o app mostra 's/lado', mas registre o tempo total da sustentação."},{"id":"birddog","name":"Bird dog","target":"8-6-4/lado · 8s cada","rest":45,"kind":"bird","range":[4,8],"tip":"Quatro apoios, abdômen contraído de leve. Braço e perna opostos estendidos ao mesmo tempo.<br><b>A perna sobe só até a horizontal, nunca acima da linha do quadril.</b> Imagine um copo d'água na lombar que não pode derramar.<br><b>O quadril não roda:</b> as duas cristas ilíacas ficam paralelas ao chão do começo ao fim.<br>Sustente 8s. Ao voltar, varra o chão com a mão e o joelho sem encostar.<br>Pirâmide decrescente: 8, 6 e 4 repetições de cada lado. <b>Nunca aumente o tempo da sustentação — só o número de repetições.</b>"},{"id":"agachparede","name":"Agachamento isométrico na parede","target":"4 séries × 120s","rest":120,"kind":"plank","range":[120,120],"tip":"Costas na parede, pés a uns 50 cm, joelhos perto de 90° e sobre os tornozelos. Fique parado 2 minutos. Quatro séries — <b>use o botão de adicionar série para a quarta</b>.<br><b>Respire normalmente, nunca prenda o ar.</b> Isométrico eleva a pressão arterial de forma aguda e prender a respiração multiplica o efeito.<br>Ajuste o ângulo do joelho, não o tempo: os últimos 30s de cada série devem ser difíceis mas sustentáveis.<br>Isto é tratamento de pressão arterial, não cardio: não gera prana no Sopro Firme.<br>O app mostra 's/lado': registre os 120s de cada série."}]}};
+const WORKOUTS_PADRAO={"A":{"day":"Terça","weekday":2,"grupo":"musculacao","bloqueadoFase0":false,"ex":[{"id":"legpress","name":"Leg press 45°","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Rampa inclinada, pés na largura dos ombros. <b>Desça só até antes de sentir a bacia começar a girar para trás.</b> Não é preciso trazer os joelhos perto do peito. Sempre bilateral."},{"id":"flexora","name":"Cadeira flexora","target":"12-15","rest":90,"kind":"strength","range":[12,15],"tip":"Sentado, rolo atrás das panturrilhas, costas totalmente apoiadas. Sem deslocar o quadril para buscar mais amplitude.<br><b>Você está em 12 repetições com 50 kg: a faixa é 12-15. Ganhe as repetições antes de subir a carga.</b>"},{"id":"chest","name":"Supino na máquina","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Manoplas na altura do meio do peito. Costas no encosto; <b>não arqueie a lombar para completar a repetição</b>. Volta controlada."},{"id":"remada","name":"Remada com apoio no peito","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Peito apoiado. Não retire o peito do apoio nem balance o tronco para puxar mais peso."},{"id":"lateral","name":"Elevação lateral sentado","target":"12-15","rest":60,"kind":"strength","range":[12,15],"tip":"Banco com encosto e halteres leves. Suba até a linha dos ombros sem inclinar o tronco.<br><b>Faixa 12-15: ganhe repetições com 7 kg antes de pegar o halter de 8.</b>"},{"id":"panturrilha","name":"Panturrilha sentado","target":"15-20","rest":60,"kind":"strength","range":[15,20],"tip":"Movimento controlado, pausa de 1s embaixo e 1s em cima.<br><b>Atenção: você tem feito 12 repetições, mas a faixa aqui é 15-20. Mantenha 25 kg e suba para 15 antes de pensar em carga.</b>"},{"id":"ponte","name":"Ponte unilateral","target":"8-10/lado · 2s no topo","rest":60,"kind":"bird","range":[8,10],"tip":"Deitado de costas, suba o quadril até a linha reta do joelho ao ombro. Com o quadril no alto, <b>estenda uma perna, deixando o joelho reto</b>, segure 2s, recolha e troque.<br><b>O critério não é conforto, é a bacia.</b> Ela não pode cair nem rodar quando a perna estende — imagine uma bandeja de água apoiada nela que não pode derramar. Se a bacia desabar antes da última repetição, termine a série com o joelho dobrado em vez de estendido.<br>Três níveis, do mais fácil ao mais difícil: ponte com os dois pés no chão; ponte levantando o joelho dobrado; ponte estendendo a perna. <b>Suba de nível quando a bacia ficar parada, não quando ficar fácil.</b><br>Não arqueie a lombar para ganhar altura: o topo é a linha reta. Se a posterior da coxa de apoio começar a travar, aproxime o pé do glúteo e empurre com o glúteo, não com o calcanhar."},{"id":"farmer","name":"Farmer hold","target":"3 séries × 45-60s · halter em cada mão","rest":90,"kind":"pallof","range":[45,60],"tip":"Um halter pesado em cada mão, em pé, braços ao lado do corpo. Só segure, parado, pelo tempo marcado.<br><b>Ombros para trás e para baixo, costelas encaixadas, sem inclinar para nenhum lado.</b> O corpo fica na vertical como se não houvesse peso.<br><b>É o ensaio do carregamento, com a dose sob seu controle.</b> Os extensores da lombar seguram o tronco ereto exatamente como quando você carrega equipamento — só que aqui você escolhe o peso e o tempo.<br>Comece com o halter que você aguenta 45s com postura limpa e suba só quando fizer 60s nas três séries. Se a lombar ficar dolorida no dia seguinte, reduza o peso: a dose passou.<br>Respire normalmente. Registre o peso de <b>um</b> halter no campo de carga.<br>Quando as duas pranchas chegarem a 40s, isto vira caminhada carregada e depois suitcase carry, com peso de um lado só."}]},"B":{"day":"Quinta","weekday":4,"grupo":"musculacao","bloqueadoFase0":true,"ex":[{"id":"flexora","name":"Cadeira flexora","target":"12-15","rest":90,"kind":"strength","range":[12,15],"tip":"Costas apoiadas. Não use o tronco para ajudar.<br><b>Faixa 12-15: ganhe repetições antes de subir carga.</b>"},{"id":"extensora","name":"Cadeira extensora","target":"12-15","rest":90,"kind":"strength","range":[12,15],"tip":"Costas no encosto e quadril estável durante toda a série.<br><b>Faixa 12-15: ganhe repetições antes de subir carga.</b>"},{"id":"pulldown","name":"Puxada frontal","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Puxe até a clavícula <b>sem inclinar nem balançar o tronco</b>. Nunca atrás da nuca.<br><b>Parada em 40 kg desde outubro, sempre com 12 repetições fáceis. Suba para 45 kg.</b>"},{"id":"desenv","name":"Desenvolvimento na máquina","target":"10-12","rest":90,"kind":"strength","range":[10,12],"tip":"Encosto alto. Se precisar arquear a lombar para empurrar, reduza a carga.<br><b>12 repetições fáceis com 30 kg: suba para 35.</b>"},{"id":"rosca","name":"Rosca direta sentado","target":"10-12","rest":60,"kind":"strength","range":[10,12],"tip":"Banco com encosto, cotovelos junto ao tronco e sem impulso das costas.<br><b>Parada em 7 kg desde o começo. Suba para 8.</b>"},{"id":"abdutora","name":"Cadeira abdutora","target":"12-15","rest":60,"kind":"strength","range":[12,15],"tip":"Empurre os apoios para fora. Não force amplitude final se a pelve começar a se mover.<br><b>Faixa 12-15: ganhe repetições antes de subir carga.</b>"},{"id":"hiperext","name":"Hiperextensão lombar","target":"10-15 · peso do corpo","rest":90,"kind":"strength","range":[10,15],"tip":"Banco de hiperextensão. <b>A almofada fica abaixo da crista ilíaca, deixando a dobra do quadril livre</b> — se ela subir para a barriga, todo o movimento sai da coluna.<br><b>Suba só até a linha reta do corpo, nunca acima.</b> Passar da linha é onde a compressão nas facetas e no disco posterior dispara.<br>2s para descer, 2s para subir. Nunca caia no fundo e use o repique.<br>Só peso do corpo. Anilha no peito apenas depois que a prancha lateral chegar a 40s limpos. Deixe o campo de carga em branco."}]},"C":{"day":"Sábado","weekday":6,"grupo":"musculacao","bloqueadoFase0":false,"ex":[{"id":"hipthrust","name":"Elevação pélvica (hip thrust)","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"<b>Subiu → alinhou → contraiu os glúteos → parou.</b> Não ganhe altura arqueando a lombar.<br><b>12 repetições fáceis com 40 kg: suba para 45.</b>"},{"id":"legpress","name":"Leg press 45°","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Mesma técnica da terça. Pare antes de a pelve começar a girar para trás.<br><b>12 repetições fáceis com 65 kg: suba para 70.</b>"},{"id":"peck","name":"Peck deck","target":"10-12","rest":90,"kind":"strength","range":[10,12],"tip":"Costas apoiadas, cotovelos levemente flexionados e sem impulso do tronco.<br><b>12 repetições fáceis com 50 kg: suba para 55.</b>"},{"id":"pulldownN","name":"Puxada pegada neutra","target":"10-12","rest":120,"kind":"strength","range":[10,12],"tip":"Tronco quase vertical e estável. Não transforme a puxada em extensão do tronco.<br><b>12 repetições fáceis com 50 kg: suba para 55.</b>"},{"id":"triceps","name":"Tríceps na polia com corda","target":"10-12","rest":60,"kind":"strength","range":[10,12],"tip":"Fique ereto. Se precisar inclinar o tronco para terminar, a série acabou."},{"id":"martelo","name":"Rosca martelo","target":"10-12","rest":60,"kind":"strength","range":[10,12],"tip":"Banco com encosto, palmas uma para a outra e cotovelos próximos ao corpo.<br><b>Parada em 8 kg desde setembro. Suba para 10.</b>"},{"id":"pallof","name":"Pallof hold","target":"15-20s/lado","rest":45,"kind":"pallof","range":[15,20],"tip":"Carga muito leve. <b>Apenas impeça o corpo de girar.</b> Único exercício de core que fica nos treinos de academia: ele não é do Big 3 e treina anti-rotação em pé, com carga.<br>Já está em 20s: o próximo passo é o Pallof press, mesma carga, estendendo e recolhendo os braços."},{"id":"farmer","name":"Farmer hold","target":"3 séries × 45-60s · halter em cada mão","rest":90,"kind":"pallof","range":[45,60],"tip":"Um halter pesado em cada mão, em pé, braços ao lado do corpo. Só segure, parado, pelo tempo marcado.<br><b>Ombros para trás e para baixo, costelas encaixadas, sem inclinar para nenhum lado.</b> O corpo fica na vertical como se não houvesse peso.<br><b>É o ensaio do carregamento, com a dose sob seu controle.</b> Os extensores da lombar seguram o tronco ereto exatamente como quando você carrega equipamento — só que aqui você escolhe o peso e o tempo.<br>Comece com o halter que você aguenta 45s com postura limpa e suba só quando fizer 60s nas três séries. Se a lombar ficar dolorida no dia seguinte, reduza o peso: a dose passou.<br>Respire normalmente. Registre o peso de <b>um</b> halter no campo de carga.<br>Quando as duas pranchas chegarem a 40s, isto vira caminhada carregada e depois suitcase carry, com peso de um lado só."}]},"D":{"day":"Segunda, quarta e sexta","weekday":1,"grupo":"coluna","bloqueadoFase0":false,"ex":[{"id":"catcamel","name":"Cat-camel","target":"6-8 ciclos · aquecimento","rest":15,"kind":"curl","range":[6,8],"tip":"Quatro apoios. Alterne devagar entre arredondar as costas para cima e deixá-las ceder para baixo.<br><b>A intenção é movimento, não alongamento.</b> Não force o fim do arco — você está reduzindo a viscosidade do tecido, não ganhando amplitude.<br>Registre só os ciclos; deixe o campo de segundos em branco."},{"id":"curlup","name":"McGill curl-up","target":"8-6-4 · 8s cada","rest":45,"kind":"curl","range":[4,8],"tip":"Uma perna dobrada com o pé no chão, a outra esticada. <b>Mãos embaixo da lombar, palmas para baixo</b>, para preservar a curvatura — ela não pode achatar. Língua no céu da boca.<br>Suba cabeça, pescoço e ombros <b>como um bloco rígido</b>, poucos centímetros. Não é abdominal: o queixo não vai ao peito.<br>Pirâmide decrescente: 8, depois 6, depois 4 repetições de 8s. <b>Troque a perna dobrada entre as séries.</b><br>Se a mão embaixo das costas deixar de sentir pressão, a lombar achatou."},{"id":"pranchalat","name":"Prancha lateral","target":"20-40s/lado · meta 40s","rest":45,"kind":"plank","range":[20,40],"tip":"Cotovelo embaixo do ombro, antebraço perpendicular ao corpo, mão livre no ombro oposto. Comece com joelhos a 90°.<br>Linha reta do joelho ao ombro, glúteo apertado. <b>O tronco não roda: o peito aponta para a parede, não para o chão.</b><br><b>Meta 40s por lado — é o critério formal para abrir a próxima fase</b> (carregamentos e dobradiça de quadril). Suba 5s na primeira sustentação por semana.<br>Tempo com quadril caído não conta. Encerre firme em vez de chegar aos 40 desabado.<br>O app mostra 's/lado': registre o tempo de um lado."},{"id":"pranchafrontal","name":"Prancha frontal","target":"20-40s · meta 40s","rest":45,"kind":"plank","range":[20,40],"tip":"Antebraços no chão, cotovelos sob os ombros, corpo numa linha só. Glúteo e abdômen contraídos juntos. <b>O quadril não cede para baixo nem sobe em V.</b> Pescoço neutro, olhando um palmo à frente das mãos.<br><b>Meta 40s — o segundo critério da próxima fase, junto com a prancha lateral.</b> Teste quanto aguenta limpo e suba 5s por semana.<br>Aqui o tempo não é por lado: o app mostra 's/lado', mas registre o tempo total da sustentação."},{"id":"birddog","name":"Bird dog","target":"8-6-4/lado · 8s cada","rest":45,"kind":"bird","range":[4,8],"tip":"Quatro apoios, abdômen contraído de leve. Braço e perna opostos estendidos ao mesmo tempo.<br><b>A perna sobe só até a horizontal, nunca acima da linha do quadril.</b> Imagine um copo d'água na lombar que não pode derramar.<br><b>O quadril não roda:</b> as duas cristas ilíacas ficam paralelas ao chão do começo ao fim.<br>Sustente 8s. Ao voltar, varra o chão com a mão e o joelho sem encostar.<br>Pirâmide decrescente: 8, 6 e 4 repetições de cada lado. <b>Nunca aumente o tempo da sustentação — só o número de repetições.</b>"},{"id":"ywbrucos","name":"Y-W de bruços","target":"2×10-15 reps + 1 sustentação de 20-30s","rest":45,"kind":"curl","range":[10,15],"tip":"Deitado de bruços, testa apoiada ou olhando para o chão. Estenda os braços à frente formando um V, depois <b>puxe os cotovelos para junto das costelas</b>, como se guardasse as mãos nos bolsos de trás. Segure 2s e volte ao V.<br><b>O movimento é das escápulas, não dos braços.</b> Pense em descer e juntar as omoplatas.<br><b>O peito sobe muito pouco do chão — poucos centímetros.</b> Se o peito subir alto, vira superman e passa a ser extensão lombar sob o peso do tronco. As pernas ficam no chão o tempo todo.<br>Queixo recolhido, pescoço neutro: não olhe para a frente. 2s para abrir, 2s para puxar, sem impulso e sem peso nas mãos.<br><b>Terceira série diferente: fique parado na posição W por 20 a 30 segundos.</b> A dor no meio das costas ao tocar não é falta de força, é falta de resistência numa posição mantida — e é a sustentação longa que treina isso. Registre esse tempo no campo de segundos."},{"id":"agachparede","name":"Agachamento isométrico na parede","target":"4 séries × 120s","rest":120,"kind":"plank","range":[120,120],"tip":"Costas na parede, pés a uns 50 cm, joelhos perto de 90° e sobre os tornozelos. Fique parado 2 minutos. Quatro séries — <b>use o botão de adicionar série para a quarta</b>.<br><b>Respire normalmente, nunca prenda o ar.</b> Isométrico eleva a pressão arterial de forma aguda e prender a respiração multiplica o efeito.<br>Ajuste o ângulo do joelho, não o tempo: os últimos 30s de cada série devem ser difíceis mas sustentáveis.<br>Isto é tratamento de pressão arterial, não cardio: não gera prana no Sopro Firme.<br>O app mostra 's/lado': registre os 120s de cada série."}]}};
 let WORKOUTS = JSON.parse(JSON.stringify(WORKOUTS_PADRAO));
 const PHASES=[
 {name:"Semanas 1-2",sets:2,reserve:"4-5 reps em reserva",note:"A na terça e C no sábado. Aprender aparelhos e amplitude.",weekly:2},
 {name:"A partir da semana 3",sets:2,reserve:"3-4 reps em reserva",note:"B entra apenas se não houver piora dos sintomas e a recuperação estiver boa.",weekly:3},
 {name:"Fase seguinte",sets:3,reserve:"2-3 reps em reserva",note:"Progressão de carga pelo critério de execução.",weekly:3}
 ]
-const APP_VERSAO="2.9.12";
+const APP_VERSAO="2.9.13";
 const STORAGE="iogui-v2";const OLD_STORAGE="treino-dados";
 const MAX_BACKUP_BYTES=5*1024*1024;
 const MAX_PROGRAM_BYTES=512*1024;
@@ -17,9 +17,10 @@ const PRANA_META=60;
 const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
 const defaultData=()=>({version:2,profile:{name:"Roque",start:new Date().toISOString().slice(0,10)},phase:0,autoAdvance:true,history:[],cardio:[],videos:{},inProgress:null,programa:{url:"",json:null,versao:"",atualizado:"",modo:"padrao"},som:{ativo:true}});
 let data=defaultData(), installPrompt=null, timerId=null, autoAdvanceTimer=null;
-let editorProgram=null, editorCtx=null, pendingDelete=null;
+let editorProgram=null, editorCtx=null, pendingDelete=null, pendingDateId=null;
 let evoExerciseId=null, evoPeriod='12', evoSelectedWeek=null;
 let calendarCursor=new Date(new Date().getFullYear(),new Date().getMonth(),1);
+let historyReviewOnly=false, appIniciado=false, sessaoEsquecidaIgnorada='';
 function novoId(prefix='h'){try{return prefix+'-'+crypto.randomUUID()}catch(e){return prefix+'-'+Date.now()+'-'+Math.random().toString(36).slice(2,9)}}
 function garantirIdsHistorico(){let mudou=false;(data.history||[]).forEach(h=>{if(!h.id){h.id=novoId('treino');mudou=true}});return mudou}
 
@@ -142,7 +143,7 @@ function entradaHistoricoSegura(raw){
   const phaseN=Number(raw.phase),phaseSafe=Number.isInteger(phaseN)?Math.max(0,Math.min(2,phaseN)):0;
   const g=Number(raw.weeklyGoal);
   const items=Array.isArray(raw.items)?raw.items.slice(0,MAX_HISTORY_ITEMS).map(itemHistoricoSeguro).filter(Boolean):[];
-  return {id:idSeguro(raw.id,100)||novoId('treino'),workout,iso,started:isoSeguro(raw.started,''),phase:phaseSafe,weeklyGoal:Number.isFinite(g)&&g>=1&&g<=7?Math.round(g):(PHASES[phaseSafe]||PHASES[0]).weekly,items};
+  return {id:idSeguro(raw.id,100)||novoId('treino'),workout,iso,started:isoSeguro(raw.started,''),dataManual:isoSeguro(raw.dataManual,''),phase:phaseSafe,weeklyGoal:Number.isFinite(g)&&g>=1&&g<=7?Math.round(g):(PHASES[phaseSafe]||PHASES[0]).weekly,items};
 }
 function urlVideoSegura(raw){
   const s=String(raw??'').trim();
@@ -250,8 +251,18 @@ function conferirSessao(){
     return false;
   }
   if(s.index>=w.ex.length){s.index=Math.max(0,w.ex.length-1);try{save()}catch(e){}}
+  if(appIniciado)avisarSessaoEsquecida(s);
   return true;
 }
+function avisarSessaoEsquecida(s=data.inProgress){
+  if(!s||!diaLocalAntesDeHoje(s.started)||sessaoEsquecidaIgnorada===s.started)return;
+  const txt=$('#forgottenTxt');if(!txt)return;
+  txt.innerHTML=`Você tem o <b>Treino ${escHtml(s.workout)}</b> aberto desde ${fmtDia(s.started)}.`;
+  try{$('#dlgForgotten').showModal()}catch(e){}
+}
+function continuarSessaoEsquecida(){const s=data.inProgress;if(s)sessaoEsquecidaIgnorada=s.started;try{$('#dlgForgotten').close()}catch(e){};showView('session')}
+function finalizarSessaoEsquecida(){const s=data.inProgress;if(s)sessaoEsquecidaIgnorada=s.started;try{$('#dlgForgotten').close()}catch(e){};showView('session');reviewWorkout()}
+function descartarSessaoEsquecida(){if(!data.inProgress)return; if(!confirm('Descartar este treino em andamento? Os dados digitados nesta sessão serão perdidos.'))return;clearTimeout(autoAdvanceTimer);autoAdvanceTimer=null;data.inProgress=null;save();try{$('#dlgForgotten').close()}catch(e){};toast('Treino em andamento descartado.');showView('home')}
 
 function usarProgramaPadrao(){
   WORKOUTS=JSON.parse(JSON.stringify(WORKOUTS_PADRAO));
@@ -295,6 +306,13 @@ function itemSummary(ex,item){if(item.summary)return item.summary;return(item.se
 function allExercisesUnique(){const m=new Map();Object.values(WORKOUTS).forEach(w=>w.ex.forEach(ex=>{if(!m.has(ex.id))m.set(ex.id,ex)}));return[...m.values()]}
 function findEx(id){return allExercisesUnique().find(e=>e.id===id)}
 function weekStart(d){const x=new Date(d);x.setHours(0,0,0,0);const n=(x.getDay()+6)%7;x.setDate(x.getDate()-n);return x.getTime()}
+function dataSessao(h){const m=isoSeguro(h?.dataManual);return m||h?.iso}
+function diaLocalAntesDeHoje(iso){const d=new Date(iso),h=new Date();if(!Number.isFinite(d.getTime()))return false;d.setHours(0,0,0,0);h.setHours(0,0,0,0);return d<h}
+function fmtDia(iso,ano=false){const d=new Date(iso);return Number.isFinite(d.getTime())?d.toLocaleDateString('pt-BR',ano?{day:'2-digit',month:'2-digit',year:'2-digit'}:{day:'2-digit',month:'2-digit'}):'—'}
+function isoComDiaLocal(dia,isoHora){if(!/^\d{4}-\d{2}-\d{2}$/.test(String(dia||'')))return '';const [a,m,d]=dia.split('-').map(Number),base=new Date(isoHora);if(!Number.isFinite(base.getTime()))return '';const x=new Date(a,m-1,d,base.getHours(),base.getMinutes(),base.getSeconds(),base.getMilliseconds());if(x.getFullYear()!==a||x.getMonth()!==m-1||x.getDate()!==d)return '';return x.toISOString()}
+function dataNoFuturo(dia){if(!/^\d{4}-\d{2}-\d{2}$/.test(String(dia||'')))return true;const [a,m,d]=dia.split('-').map(Number),x=new Date(a,m-1,d),h=new Date();x.setHours(0,0,0,0);h.setHours(0,0,0,0);return !Number.isFinite(x.getTime())||x>h}
+function dataAntesDoPrograma(dia){return /^\d{4}-\d{2}-\d{2}$/.test(String(dia||''))&&data.profile?.start&&dia<data.profile.start}
+function precisaConferirData(h){return !!(!h?.dataManual&&h?.started&&h?.iso&&localDayKey(h.started)!==localDayKey(h.iso))}
 function grupoDoTreino(k){return WORKOUTS[k]?.grupo||'musculacao'}
 function gruposDaFicha(){return [...new Set(chavesTreino().map(grupoDoTreino))]}
 function contaPorGrupo(entries){
@@ -316,18 +334,18 @@ function rotuloGrupo(g){
 function semanaCorteBraco(){
   const prim=[...(data.history||[])]
     .filter(h=>grupoDoTreino(h.workout)==='coluna')
-    .sort((a,b)=>new Date(a.iso)-new Date(b.iso))[0];
-  return prim?weekStart(new Date(prim.iso)):null;
+    .sort((a,b)=>new Date(dataSessao(a))-new Date(dataSessao(b)))[0];
+  return prim?weekStart(new Date(dataSessao(prim))):null;
 }
 function countThisWeek(){
   const ws=weekStart(new Date());
-  return data.history.filter(h=>weekStart(new Date(h.iso))===ws&&grupoDoTreino(h.workout)==='musculacao').length;
+  return data.history.filter(h=>weekStart(new Date(dataSessao(h)))===ws&&grupoDoTreino(h.workout)==='musculacao').length;
 }
 function goalHistorico(h){const g=Number(h?.weeklyGoal);if(Number.isFinite(g)&&g>0)return g;return (PHASES[h?.phase]||PHASES[0]).weekly}
 function goalDaSemana(entries,fallback=phase().weekly){return entries.length?Math.max(...entries.map(goalHistorico)):fallback}
 function streakWeeks(){
   const one=7*864e5,current=weekStart(new Date());
-  const musculacao=(ws)=>data.history.filter(h=>weekStart(new Date(h.iso))===ws&&grupoDoTreino(h.workout)==='musculacao');
+  const musculacao=(ws)=>data.history.filter(h=>weekStart(new Date(dataSessao(h)))===ws&&grupoDoTreino(h.workout)==='musculacao');
   const atual=musculacao(current),goalAtual=phase().weekly;
   let streak=0,i=atual.length>=goalAtual?0:1;
   for(;i<60;i++){
@@ -342,16 +360,16 @@ function streakWeeks(){
 const MANUTENCAO = 2;
 function armState(){
   const one=7*864e5,current=weekStart(new Date());
-  const hist=[...(data.history||[])].filter(h=>Number.isFinite(Date.parse(h.iso))).sort((a,b)=>new Date(a.iso)-new Date(b.iso));
+  const hist=[...(data.history||[])].filter(h=>Number.isFinite(Date.parse(dataSessao(h)))).sort((a,b)=>new Date(dataSessao(a))-new Date(dataSessao(b)));
   const grupos=gruposDaFicha(),corte=semanaCorteBraco();
-  const entriesNow=hist.filter(h=>weekStart(new Date(h.iso))===current);
+  const entriesNow=hist.filter(h=>weekStart(new Date(dataSessao(h)))===current);
   const porGrupo=contaPorGrupo(entriesNow),faltam={};
   grupos.forEach(g=>faltam[g]=Math.max(0,MANUTENCAO-(porGrupo[g]||0)));
   if(!hist.length)return{raise:0,weeks:0,done:0,porGrupo,faltam,virgem:true,regraNova:false};
 
-  let semana=weekStart(new Date(hist[0].iso)),weeks=0,baseRaise=0;
+  let semana=weekStart(new Date(dataSessao(hist[0]))),weeks=0,baseRaise=0;
   while(semana<current){
-    const entries=hist.filter(h=>weekStart(new Date(h.iso))===semana);
+    const entries=hist.filter(h=>weekStart(new Date(dataSessao(h)))===semana);
     const regraNova=corte!==null&&semana>=corte;
     const ok=regraNova
       ? grupos.every(g=>(contaPorGrupo(entries)[g]||0)>=MANUTENCAO)
@@ -387,7 +405,7 @@ function scheduledWorkoutToday(){
 function bloqueado(k){return data.phase===0 && (WORKOUTS[k]?.bloqueadoFase0 ?? k==='B')}
 function todayWorkout(){const k=scheduledWorkoutToday();if(k&&bloqueado(k))return null;return k}
 function localDayKey(d=new Date()){const x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`}
-function treinoConcluidoHoje(k){const hoje=localDayKey();return data.history.some(h=>h.workout===k&&localDayKey(h.iso)===hoje)}
+function treinoConcluidoHoje(k){const hoje=localDayKey();return data.history.some(h=>h.workout===k&&localDayKey(dataSessao(h))===hoje)}
 function plannedToday(){const d=new Date().getDay(),sched=scheduledWorkoutToday();if(sched&&bloqueado(sched))return`${WORKOUTS[sched].day} · fase inicial: Treino ${sched} ainda bloqueado`;if(sched)return treinoConcluidoHoje(sched)?`Treino ${sched} · concluído hoje ✓`:`Treino ${sched} · ${WORKOUTS[sched].day}`;if(d===1||d===3||d===5)return"Pilates · sem musculação";if(d===0)return"Descanso";return"Dia livre da musculação"}
 function yogiPx(x,y,w=1,h=1,f='#2f1a12'){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`}
 function yogiSprite(level=0, cls='yogi-svg'){
@@ -477,11 +495,11 @@ function renderHome(){
   $('#hello').textContent=`${greeting()}, ${n}. · ${dayText()}`;
   $('#todayPlan').textContent=plannedToday();
   $('#phaseSummary').textContent=`${phase().name} · ${phase().sets} séries · ${phase().reserve}`;
-  const last=[...(data.history||[])].sort((a,b)=>(Date.parse(b.iso)||0)-(Date.parse(a.iso)||0))[0];
+  const last=[...(data.history||[])].sort((a,b)=>(Date.parse(dataSessao(b))||0)-(Date.parse(dataSessao(a))||0))[0];
   if(last){
     const dificuldades=(last.items||[]).map(it=>it.difficulty).filter(x=>['v','a','r'].includes(x));
     const d=dificuldades.includes('r')?'r':dificuldades.includes('a')?'a':dificuldades.includes('v')?'v':'';
-    const dt=new Date(last.iso).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
+    const dt=new Date(dataSessao(last)).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
     $('#lastSummary').innerHTML=`${d?`<i class="difficulty-dot ${d}" title="Dificuldade máxima: ${dificuldadeLabel(d)}"></i>`:''}<span>Último treino: <b>Treino ${escHtml(last.workout)} · ${dt}</b></span>`;
   }else $('#lastSummary').innerHTML='<span class="muted">Nenhum treino salvo ainda.</span>';
   $('#startToday').disabled=!t||feito;$('#startToday').textContent=feito?`Treino ${t} concluído ✓`:(t?`Começar Treino ${t}`:'Sem treino hoje');
@@ -522,7 +540,7 @@ function registrosExercicioOrdenados(exid){
     .map(h=>({h,it:(h.items||[]).find(x=>x.id===exid)}))
     .filter(x=>x.it)
     .sort((a,b)=>{
-      const tb=Date.parse(b.h?.iso||'')||0, ta=Date.parse(a.h?.iso||'')||0;
+      const tb=Date.parse(dataSessao(b.h)||'')||0, ta=Date.parse(dataSessao(a.h)||'')||0;
       return tb-ta;
     });
 }
@@ -635,12 +653,23 @@ function reviewWorkout(){
  const items=collectItems();if(!items.length){toast('Nada anotado ainda.');return}const falta=w.ex.length-items.length;
  $('#finishSub').innerHTML=`<b>${items.length} de ${w.ex.length}</b> exercícios registrados${falta?` · ${falta} sem anotação`:''}. Depois de finalizar, o treino vai para o histórico.`;
  $('#finishList').innerHTML=items.map(it=>{const ex=findEx(it.id)||{kind:'strength'},d=it.difficulty;return`<div class="hist-line"><span>${escHtml(it.name)}</span><span>${escHtml(itemSummary(ex,it))} ${d?`<span class="difficulty-inline"><i class="difficulty-dot ${d}"></i>${dificuldadeLabel(d)}</span>`:''}</span></div>`}).join('');
+ const wrap=$('#finishDateWrap'),inp=$('#finishDateInput'),note=$('#finishDateNote');
+ if(wrap&&inp&&note&&diaLocalAntesDeHoje(s.started)){
+   wrap.hidden=false;inp.value=localDayKey();
+   note.innerHTML=`Este treino foi aberto em <b>${fmtDia(s.started)}</b> e você está finalizando em <b>${fmtDia(new Date())}</b>. Em que dia você treinou?`;
+ }else if(wrap){wrap.hidden=true;if(inp)inp.value='';if(note)note.textContent=''}
  $('#finishOk').textContent=falta?'Finalizar assim mesmo':'Finalizar treino';$('#dlgFinish').showModal();
 }
 function finishWorkout(){
  const s=currentSession();if(!s)return;if(!WORKOUTS[s.workout]){data.inProgress=null;save();try{$('#dlgFinish').close()}catch(e){}toast('A ficha mudou. O treino em andamento foi encerrado.');showView('home');return}
  const items=collectItems();if(!items.length){toast('Nada anotado ainda.');return}
- data.history.unshift({id:novoId('treino'),workout:s.workout,iso:new Date().toISOString(),started:s.started,phase:s.phase,weeklyGoal:(PHASES[s.phase]||PHASES[0]).weekly,items});data.history=data.history.slice(0,180);data.inProgress=null;save();calendarCursor=new Date(new Date().getFullYear(),new Date().getMonth(),1);try{$('#dlgFinish').close()}catch(e){}toast('Treino salvo. Braço firme.');showView('progress');
+ const agora=new Date(),iso=agora.toISOString();let dataManual='';
+ const fin=$('#finishDateWrap'),inp=$('#finishDateInput');
+ if(fin&&!fin.hidden&&inp?.value){
+   if(dataNoFuturo(inp.value)){toast('A data do treino não pode estar no futuro.');return}
+   if(inp.value!==localDayKey(agora)){dataManual=isoComDiaLocal(inp.value,iso);if(!dataManual){toast('Data do treino inválida.');return}}
+ }
+ data.history.unshift({id:novoId('treino'),workout:s.workout,iso,started:s.started,dataManual,phase:s.phase,weeklyGoal:(PHASES[s.phase]||PHASES[0]).weekly,items});data.history=data.history.slice(0,180);data.inProgress=null;save();calendarCursor=new Date(new Date().getFullYear(),new Date().getMonth(),1);try{$('#dlgFinish').close()}catch(e){}toast('Treino salvo. Braço firme.');showView('progress');
 }
 function abortSession(){if(!data.inProgress)return showView('home');if(confirm('Sair do treino? O que você já digitou ficará salvo para continuar depois.'))showView('home')}
 
@@ -824,9 +853,9 @@ function labelSemanaCurto(ws,longo=false){
   return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
 }
 function dadosSemanaisExercicio(ex){
-  const atual=weekStart(new Date()),map=new Map(),hist=[...data.history].sort((a,b)=>new Date(a.iso)-new Date(b.iso));
+  const atual=weekStart(new Date()),map=new Map(),hist=[...data.history].sort((a,b)=>new Date(dataSessao(a))-new Date(dataSessao(b)));
   hist.forEach(h=>{
-    const ws=weekStart(new Date(h.iso));
+    const ws=weekStart(new Date(dataSessao(h)));
     const it=(h.items||[]).find(x=>x.id===ex.id);
     if(!it)return;
     const s=sessaoParaEvolucao(ex,it);if(!s)return;
@@ -1000,7 +1029,7 @@ function corTreino(k){if(CAL_COLORS[k])return CAL_COLORS[k];let h=0;for(const c 
 function chaveDia(y,m,d){return`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
 function renderCalendar(){
  const title=$('#calendarTitle'),grid=$('#calendarGrid'),legend=$('#calendarLegend');if(!title||!grid||!legend)return;const y=calendarCursor.getFullYear(),m=calendarCursor.getMonth(),nome=calendarCursor.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});title.textContent=nome.charAt(0).toUpperCase()+nome.slice(1);
- const porDia=new Map();(data.history||[]).forEach(h=>{const d=new Date(h.iso);if(!h?.workout||!Number.isFinite(d.getTime())||d.getFullYear()!==y||d.getMonth()!==m)return;const k=chaveDia(y,m,d.getDate());if(!porDia.has(k))porDia.set(k,[]);porDia.get(k).push(String(h.workout))});
+ const porDia=new Map();(data.history||[]).forEach(h=>{const d=new Date(dataSessao(h));if(!h?.workout||!Number.isFinite(d.getTime())||d.getFullYear()!==y||d.getMonth()!==m)return;const k=chaveDia(y,m,d.getDate());if(!porDia.has(k))porDia.set(k,[]);porDia.get(k).push(String(h.workout))});
  const first=new Date(y,m,1),offset=(first.getDay()+6)%7,days=new Date(y,m+1,0).getDate(),today=localDayKey();let html='';for(let i=0;i<offset;i++)html+='<div class="calendar-day empty"></div>';
  for(let d=1;d<=days;d++){const key=chaveDia(y,m,d),treinos=[...new Set(porDia.get(key)||[])],badges=treinos.map(k=>`<span class="calendar-badge" style="background:${corTreino(k)}" title="Treino ${escHtml(k)}">${escHtml(String(k).slice(0,2))}</span>`).join('');html+=`<div class="calendar-day ${key===today?'today':''}"><div class="calendar-number">${d}</div><div class="calendar-badges">${badges}</div></div>`}
  const used=offset+days,total=Math.ceil(used/7)*7;for(let i=used;i<total;i++)html+='<div class="calendar-day empty"></div>';grid.innerHTML=html;legend.innerHTML=chavesTreino().map(k=>`<span><i style="background:${corTreino(k)}"></i>Treino ${escHtml(k)}${WORKOUTS[k]?.day?` · ${escHtml(WORKOUTS[k].day)}`:''}</span>`).join('');
@@ -1011,16 +1040,48 @@ function renderProgress(){
   const total=data.history.length,week=countThisWeek(),st=streakWeeks();
   $('#stats').innerHTML=`<div class="stat card"><b>${total}</b><span>treinos</span></div><div class="stat card"><b>${week}/${phase().weekly}</b><span>esta semana</span></div><div class="stat card"><b>${st}</b><span>semanas seguidas</span></div>`;
   renderCalendar();renderEvolution();renderPranaChart();renderCardioHistory();renderLoadProgress();
+  const revisar=(data.history||[]).filter(precisaConferirData),f=$('#historyReviewFilter');
+  if(f){f.hidden=!revisar.length;f.classList.toggle('on',historyReviewOnly);f.textContent=historyReviewOnly?`Mostrando ${revisar.length} com data a conferir · mostrar todos`:`${revisar.length} treino${revisar.length!==1?'s':''} com data a conferir.`;f.onclick=()=>{historyReviewOnly=!historyReviewOnly;renderProgress()}}
   const h=$('#history');h.innerHTML='';
   if(!data.history.length){h.innerHTML='<div class="card" style="padding:20px;text-align:center">Nenhum treino salvo ainda.</div>';return}
-  data.history.slice(0,30).forEach(s=>{if(!s.id)s.id=novoId('treino');const card=document.createElement('div');card.className='hist-card card';const date=new Date(s.iso).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'});card.innerHTML=`<div class="hd"><b>Treino ${escHtml(s.workout)}</b><span>${date}</span></div>`+(s.items||[]).map(it=>{const ex=findEx(it.id)||{kind:'strength'},d=it.difficulty;return`<div class="hist-line"><span>${escHtml(it.name)}</span><span>${escHtml(itemSummary(ex,it))} ${d?`<span class="difficulty-inline"><i class="difficulty-dot ${d}"></i>${dificuldadeLabel(d)}</span>`:''}</span></div>`}).join('')+`<div class="hist-actions"><button class="hist-delete" data-history-id="${escHtml(s.id)}">🗑 Apagar este treino</button></div>`;h.appendChild(card)});
-  save();$$('#history .hist-delete').forEach(b=>b.onclick=()=>askDelete(b.dataset.historyId));
+  let lista=[...data.history].sort((a,b)=>(Date.parse(dataSessao(b))||0)-(Date.parse(dataSessao(a))||0));
+  if(historyReviewOnly)lista=lista.filter(precisaConferirData);
+  lista.slice(0,30).forEach(s=>{
+    if(!s.id)s.id=novoId('treino');const card=document.createElement('div');card.className='hist-card card';
+    const date=fmtDia(dataSessao(s),true),revisar=precisaConferirData(s),marca=revisar?` <span class="date-review" title="Vale conferir esta data">⚠ <i>aberto em ${fmtDia(s.started)}</i></span>`:'';
+    card.innerHTML=`<div class="hd"><b>Treino ${escHtml(s.workout)}</b><span>${date}${marca}</span></div>`+(s.items||[]).map(it=>{const ex=findEx(it.id)||{kind:'strength'},d=it.difficulty;return`<div class="hist-line"><span>${escHtml(it.name)}</span><span>${escHtml(itemSummary(ex,it))} ${d?`<span class="difficulty-inline"><i class="difficulty-dot ${d}"></i>${dificuldadeLabel(d)}</span>`:''}</span></div>`}).join('')+`<div class="hist-actions"><button class="hist-date" data-history-date="${escHtml(s.id)}">📅 Corrigir data</button><button class="hist-delete" data-history-id="${escHtml(s.id)}">🗑 Apagar este treino</button></div>`;
+    h.appendChild(card)
+  });
+  save();$$('#history .hist-delete').forEach(b=>b.onclick=()=>askDelete(b.dataset.historyId));$$('#history .hist-date').forEach(b=>b.onclick=()=>abrirCorrecaoData(b.dataset.historyDate));
+}
+
+function abrirCorrecaoData(id){
+  const s=data.history.find(x=>x.id===id);if(!s)return;pendingDateId=id;
+  const efetiva=dataSessao(s),inp=$('#dataInput'),txt=$('#dataTxt'),av=$('#dataAviso'),reset=$('#dataReset');if(!inp||!txt||!av||!reset)return;
+  inp.value=localDayKey(efetiva);
+  txt.innerHTML=`Treino <b>${escHtml(s.workout)}</b>, hoje marcado em <b>${fmtDia(efetiva)}</b>. A sessão foi aberta em <b>${fmtDia(s.started)}</b> e finalizada em <b>${fmtDia(s.iso)}</b>.`;
+  reset.hidden=!s.dataManual;atualizarAvisoData();try{$('#dlgData').showModal()}catch(e){}
+}
+function atualizarAvisoData(){
+  const inp=$('#dataInput'),av=$('#dataAviso');if(!inp||!av)return;
+  if(!inp.value){av.textContent='Escolha uma data válida.';return}
+  if(dataNoFuturo(inp.value)){av.textContent='A data do treino não pode estar no futuro.';return}
+  av.textContent=(dataAntesDoPrograma(inp.value)?'Atenção: esta data é anterior ao início do programa. ':'')+'Mudar a data pode mover o treino para outra semana. O braço da constância e as semanas seguidas serão recalculados na hora.';
+}
+function salvarCorrecaoData(){
+  const s=data.history.find(x=>x.id===pendingDateId),inp=$('#dataInput');if(!s||!inp)return;
+  if(!inp.value){toast('Escolha uma data válida.');return}if(dataNoFuturo(inp.value)){toast('A data do treino não pode estar no futuro.');return}
+  const iso=isoComDiaLocal(inp.value,s.iso);if(!iso){toast('Data do treino inválida.');return}
+  s.dataManual=iso;save();try{$('#dlgData').close()}catch(e){};pendingDateId=null;renderProgress();renderHome();toast('Data salva. Constância recalculada.');
+}
+function resetCorrecaoData(){
+  const s=data.history.find(x=>x.id===pendingDateId);if(!s)return;s.dataManual='';save();try{$('#dlgData').close()}catch(e){};pendingDateId=null;renderProgress();renderHome();toast('Data voltou ao registro original.');
 }
 
 function askDelete(id){
   const s=data.history.find(x=>x.id===id);if(!s)return;
   pendingDelete=id;
-  const d=new Date(s.iso).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'});
+  const d=new Date(dataSessao(s)).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'});
   $('#deleteTxt').innerHTML=`Treino <b>${escHtml(s.workout)}</b> de ${d}, com ${(s.items||[]).length} exercício${(s.items||[]).length!==1?'s':''}. Depois de apagar, <b>o braço da constância e as semanas seguidas serão recalculados na hora</b>.`;
   try{$('#dlgDelete').showModal()}catch(e){if(confirm($('#deleteTxt').textContent))apagarTreinoHistorico(id)}
 }
@@ -1261,7 +1322,9 @@ $('#programInput').onchange=e=>{const f=e.target.files[0];if(!f)return;
     renderPrograma();renderHome();toast('Ficha carregada e validada. Atualizações remotas foram pausadas.')}catch(err){toast('Ficha recusada: arquivo inválido.')}};
   rd.readAsText(f);e.target.value=''};
 $('#finishOk').onclick=()=>finishWorkout();
-$('#deleteOk').onclick=()=>pendingDelete&&apagarTreinoHistorico(pendingDelete);window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;updateInstallUI()});
+$('#deleteOk').onclick=()=>pendingDelete&&apagarTreinoHistorico(pendingDelete);
+$('#dataInput').addEventListener('input',atualizarAvisoData);$('#dataCancel').onclick=()=>{pendingDateId=null;$('#dlgData').close()};$('#dataReset').onclick=resetCorrecaoData;$('#dataOk').onclick=salvarCorrecaoData;
+$('#forgottenFinish').onclick=finalizarSessaoEsquecida;$('#forgottenContinue').onclick=continuarSessaoEsquecida;$('#forgottenDiscard').onclick=descartarSessaoEsquecida;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;updateInstallUI()});
 
 function registrarServiceWorker(){
   if(!('serviceWorker' in navigator)||location.protocol!=='https:')return;
@@ -1281,7 +1344,7 @@ async function iniciarApp(){
   const minimo=esperar(1500),remoto=programaRemotoAtivo()?buscarPrograma(false,2200):Promise.resolve(false);
   await Promise.allSettled([minimo,remoto]);
   $('#splash')?.classList.add('out');await esperar(480);$('#splash')?.remove();
-  autoOpenDailyWorkout();
+  appIniciado=true;conferirSessao();autoOpenDailyWorkout();
 }
 iniciarApp();
 registrarServiceWorker();
